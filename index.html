@@ -67,7 +67,7 @@
       linear-gradient(160deg,#FFFDF7,#FAF2E1);
     border-radius:4px;
     border:1px solid #E6D6BB;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
     z-index:2;
     transition:transform 1.2s cubic-bezier(.2,.85,.25,1) .8s, box-shadow 1.2s .8s;
     box-shadow:0 4px 14px rgba(0,0,0,.1), inset 0 0 26px rgba(140,115,80,.08);
@@ -76,10 +76,10 @@
   .letter::before{content:"";position:absolute;inset:9px;border:1px solid rgba(212,169,70,.55);border-radius:2px;pointer-events:none}
   .letter::after{content:"";position:absolute;inset:13px;border:1px dotted rgba(147,55,74,.35);border-radius:2px;pointer-events:none}
   .letter .l-eyebrow{font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:var(--wine)}
-  .letter .l-amp{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--wine);font-size:1.8rem;line-height:.9}
-  .letter .l-names{font-family:'Cormorant Garamond',serif;font-size:1.6rem;line-height:1.1;letter-spacing:.05em;color:var(--ink)}
-  .letter .l-orn{color:var(--gold);font-size:.85rem;letter-spacing:.5em;padding-left:.5em}
-  .letter .l-date{font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;color:var(--green)}
+  .letter .l-amp{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--wine);font-size:1.4rem;line-height:.85}
+  .letter .l-names{font-family:'Cormorant Garamond',serif;font-size:1.35rem;line-height:1.05;letter-spacing:.05em;color:var(--ink)}
+  .letter .l-orn{color:var(--gold);font-size:.75rem;letter-spacing:.5em;padding-left:.5em}
+  .letter .l-date{font-size:.56rem;letter-spacing:.26em;text-transform:uppercase;color:var(--green)}
   .letter{will-change:transform}
   .letter{transform:rotate(.6deg)}
   .env.open .letter{
@@ -89,19 +89,20 @@
   /* fase final: la carta crece y el sobre se desvanece debajo */
   .l-btn{
     margin-top:8px;background:var(--green);color:#FBF9F3;border:none;border-radius:24px;
-    padding:10px 24px;font-family:'Jost',sans-serif;font-size:.6rem;letter-spacing:.22em;
+    padding:8px 20px;font-family:'Jost',sans-serif;font-size:.56rem;letter-spacing:.2em;
     text-transform:uppercase;cursor:pointer;
     opacity:0;pointer-events:none;transition:opacity .6s ease .7s,background .25s;
   }
   .l-btn:hover{background:var(--green-dark)}
   .env.grow .l-btn{opacity:1;pointer-events:auto}
   .env.grow .env-back,.env.grow .env-side,.env.grow .env-bottom,.env.grow .env-flap{
-    opacity:0;transition:opacity .7s ease .2s;
+    opacity:0;pointer-events:none;transition:opacity .7s ease .2s;
   }
+  .env.grow .letter{z-index:8;cursor:pointer}
   #overlay.grow .overlay-to,#overlay.grow .overlay-name,#overlay.grow .overlay-hint{
-    opacity:0;transition:opacity .5s;
+    opacity:0;visibility:hidden;pointer-events:none;transition:opacity .5s,visibility .5s;
   }
-  .l-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.9rem;line-height:1.45;color:#5C4B3C;max-width:26ch}
+  .l-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.8rem;line-height:1.35;color:#5C4B3C;max-width:26ch;margin:0}
   .env-side{position:absolute;inset:0;z-index:3;border-radius:10px}
   .env-side.left{
     background:linear-gradient(100deg,#EBDCC1,#DFC9A3 70%);
@@ -500,8 +501,9 @@
   }
   // red de seguridad: si algo fallara en la animación, la invitación siempre queda accesible
   window.addEventListener('error', closeOverlay);
-  // 4) el botón de la carta abre la parte interactiva
+  // 4) el botón (o cualquier toque en la carta ya abierta) abre la parte interactiva
   document.getElementById('enterBtn').addEventListener('click', closeOverlay);
+  letter.addEventListener('click', () => { if (env.classList.contains('grow')) closeOverlay(); });
   let opened = false;
   document.getElementById('openSeal').addEventListener('click', () => {
     if (opened) return; opened = true;
