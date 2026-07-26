@@ -222,6 +222,16 @@
     padding:34px 24px 26px;
     display:flex;flex-direction:column;justify-content:center;
   }
+  .hero-banner{
+    display:flex;align-items:center;justify-content:center;gap:14px;
+    font-size:1.05rem;letter-spacing:.42em;padding-left:.42em;
+    color:var(--gold);margin-bottom:18px;
+  }
+  .hero-banner::before,.hero-banner::after{
+    content:"";height:1px;width:36px;background:linear-gradient(90deg,transparent,var(--gold));
+    flex:none;
+  }
+  .hero-banner::after{background:linear-gradient(90deg,var(--gold),transparent)}
   .hero-greeting{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--wine);margin-bottom:16px}
   .hero-names{
     font-family:'Great Vibes',cursive;font-weight:400;
@@ -388,7 +398,7 @@
 <!-- ======= PORTADA ======= -->
 <section id="hero">
   <p class="hero-greeting" id="guestGreeting"></p>
-  <p class="eyebrow">¡Nos casamos!</p>
+  <p class="eyebrow hero-banner">¡Nos casamos!</p>
   <h1 class="hero-names"><span class="hn"><span class="foil">Alba</span></span><span class="hn"><span class="foil amp">&amp;</span></span><span class="hn"><span class="foil">Adrián</span></span></h1>
   <div class="divider"></div>
   <p class="hero-date">3 · Septiembre · 2027</p>
@@ -570,17 +580,6 @@
   </div>
 </section>
 
-<!-- ======= MÚSICA DE LA FIESTA ======= -->
-<section id="playlist">
-  <p class="eyebrow">Música</p>
-  <h2 class="serif" style="font-size:1.9rem;color:var(--green-dark)">¿Qué canción no puede faltar?</h2>
-  <div class="card">
-    <div style="font-size:2.2rem;line-height:1" aria-hidden="true">🎶</div>
-    <p style="margin:14px 0 20px">Ayúdanos a montar la playlist de la fiesta: dinos esa canción que te hará salir a la pista sí o sí.</p>
-    <a class="btn" href="#" id="songBtn">Sugerir canción</a>
-  </div>
-</section>
-
 <!-- ======= RSVP ======= -->
 <section class="dark" id="rsvp">
   <div class="inner">
@@ -594,9 +593,11 @@
 <div id="lightbox" role="dialog" aria-label="Foto ampliada"><img id="lightboxImg" src="" alt="Foto ampliada"></div>
 
 <footer>
-  <svg id="hearts" viewBox="0 0 84 46" width="84" style="display:block;margin:0 auto 14px;cursor:pointer" role="button" aria-label="Corazones" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-    <path stroke="#7A2434" d="M30 14 C30 8 22 5 18 10 C14 5 6 8 6 14 C6 24 18 32 18 32 C18 32 30 24 30 14 Z" transform="translate(6 2)"/>
-    <path stroke="#C9A96A" d="M30 14 C30 8 22 5 18 10 C14 5 6 8 6 14 C6 24 18 32 18 32 C18 32 30 24 30 14 Z" transform="translate(30 8)"/>
+  <svg id="hearts" viewBox="0 0 96 60" width="96" style="display:block;margin:0 auto 14px;cursor:pointer" role="button" aria-label="Anillos de boda" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M52 9 l7 6 -7 8 -7 -8 z" fill="#FBF7F0" stroke="#C9A96A" stroke-width="2.2"/>
+    <circle cx="36" cy="38" r="17" stroke="#7A2434" stroke-width="3.2"/>
+    <circle cx="52" cy="40" r="17" stroke="#C9A96A" stroke-width="3.2"/>
+    <path d="M36 21 a17 17 0 0 1 12 5" stroke="#7A2434" stroke-width="3.2"/>
   </svg>
   Con todo nuestro cariño,<br>Alba &amp; Adrián
 </footer>
@@ -748,7 +749,7 @@
     });
   });
 
-  // --- Formulario (RSVP + canción): pega aquí el enlace de Google Forms cuando esté creado ---
+  // --- Formulario de confirmación (incluye la pregunta de la canción) ---
   const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSelvaOAnCgOoQjaPqU8Th2tuvILOilqWb4bQQmT_nU-m2AX9w/viewform';
   function openForm(e){
     e.preventDefault();
@@ -756,7 +757,6 @@
     else alert('¡Muy pronto! Aquí se abrirá el formulario 💌');
   }
   document.getElementById('rsvpBtn').addEventListener('click', openForm);
-  document.getElementById('songBtn').addEventListener('click', openForm);
 
   // --- Lightbox: ampliar fotos ---
   const lb = document.getElementById('lightbox');
@@ -781,7 +781,7 @@
     for (let i = 0; i < 7; i++) {
       const h = document.createElement('span');
       h.className = 'mini-heart';
-      h.textContent = ['❤️','🤍','✨'][i % 3];
+      h.textContent = ['💍','🤍','✨'][i % 3];
       const r = hearts.getBoundingClientRect(), f = footerEl.getBoundingClientRect();
       h.style.left = (r.left - f.left + r.width/2 + (Math.random()*90 - 45)) + 'px';
       h.style.top  = (r.top - f.top + Math.random()*16) + 'px';
