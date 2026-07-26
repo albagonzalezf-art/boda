@@ -158,6 +158,14 @@
   .seal:hover{transform:translate(-50%,-50%) scale(1.06)}
   .seal:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
   .env.open .seal{opacity:0;pointer-events:none;transform:translate(-50%,-50%) scale(.55) rotate(-14deg)}
+  .burst{
+    position:absolute;left:50%;top:56%;z-index:7;pointer-events:none;
+    font-size:1rem;opacity:1;
+    animation:burst .95s cubic-bezier(.15,.6,.4,1) forwards;
+  }
+  @keyframes burst{
+    to{transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(.4);opacity:0}
+  }
   .overlay-hint{margin-top:34px;color:var(--gold-soft);font-size:.75rem;letter-spacing:.24em;text-transform:uppercase;animation:pulse 2.4s infinite}
   @keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
   .bell{display:inline-block;transform-origin:top center;animation:ring 2.6s ease-in-out infinite}
@@ -204,11 +212,28 @@
     display:flex;flex-direction:column;justify-content:center;
   }
   .hero-greeting{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--wine);margin-bottom:16px}
-  .hero-names{font-size:clamp(2.1rem,8.5vw,3.3rem);line-height:1.1;color:var(--green-dark)}
+  .hero-names{
+    font-size:clamp(2.1rem,8.5vw,3.3rem);line-height:1.1;color:var(--green-dark);
+  }
+  @supports (-webkit-background-clip:text) or (background-clip:text){
+    .hero-names{
+      background:linear-gradient(105deg,var(--wine) 25%,var(--gold) 42%,#F3E3BC 50%,var(--gold) 58%,var(--wine) 75%);
+      background-size:220% auto;
+      -webkit-background-clip:text;background-clip:text;
+      -webkit-text-fill-color:transparent;color:transparent;
+      animation:foil 6s linear infinite;
+    }
+    .hero-names .amp{-webkit-text-fill-color:transparent;color:transparent}
+  }
+  @keyframes foil{to{background-position:-220% center}}
+  @media (prefers-reduced-motion: reduce){.hero-names{animation:none}}
   .amp{font-style:italic;color:var(--wine);font-size:.68em;display:block;margin:4px 0}
   .hero-date{margin-top:12px;font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;color:var(--wine)}
   .hero-place{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.35rem;margin-top:8px;color:var(--green)}
-  .hero-photo img{width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block;
+    animation:kenburns 16s ease-in-out infinite alternate}
+  @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.09)}}
+  @media (prefers-reduced-motion: reduce){.hero-photo img{animation:none}}
   .hero-photo{overflow:hidden;cursor:zoom-in;
     margin:24px auto 0;width:min(64vw,250px,34svh);aspect-ratio:4/5;
     border-radius:170px 170px 8px 8px;
@@ -582,9 +607,26 @@
   // --- Apertura del sobre ---
   const env = document.getElementById('env');
   const letter = document.getElementById('letter');
+  function startAmbientPetals(){
+    if (reduce || document.getElementById('ambient')) return;
+    const amb = document.createElement('div');
+    amb.id = 'ambient';
+    amb.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:55;overflow:hidden';
+    document.body.appendChild(amb);
+    for (let i = 0; i < 7; i++) {
+      const p = document.createElement('span');
+      p.textContent = Math.random() > .5 ? '❀' : '✿';
+      p.style.cssText = 'position:absolute;top:-6vh;opacity:.3;color:' +
+        ['#C9A96A','#D8AEB4','#7A2434'][i % 3] + ';font-size:' + (0.6 + Math.random() * 0.7) + 'rem;' +
+        'left:' + Math.random() * 100 + 'vw;animation:fall ' + (11 + Math.random() * 10) + 's linear infinite;' +
+        'animation-delay:' + (-Math.random() * 16) + 's';
+      amb.appendChild(p);
+    }
+  }
   function closeOverlay(){
     overlay.classList.add('done');
     setTimeout(() => { overlay.style.display = 'none'; }, 1200); // garantiza que nada bloquee el scroll
+    startAmbientPetals();
   }
   // red de seguridad: si algo fallara en la animación, la invitación siempre queda accesible
   window.addEventListener('error', closeOverlay);
@@ -595,6 +637,22 @@
   document.getElementById('openSeal').addEventListener('click', () => {
     if (opened) return; opened = true;
     tryPlay();                                 // la canción empieza a sonar al romper el sello
+    // explosión dorada del lacre
+    if (!reduce) {
+      const symbols = ['✦','❀','✧','•'];
+      for (let i = 0; i < 20; i++) {
+        const p = document.createElement('span');
+        p.className = 'burst';
+        p.textContent = symbols[i % symbols.length];
+        p.style.color = ['#E6D3A7','#C9A96A','#D8AEB4'][i % 3];
+        const ang = Math.random() * Math.PI * 2, dist = 70 + Math.random() * 120;
+        p.style.setProperty('--dx', Math.cos(ang) * dist + 'px');
+        p.style.setProperty('--dy', Math.sin(ang) * dist + 'px');
+        p.style.setProperty('--rot', (Math.random() * 300 - 150) + 'deg');
+        env.appendChild(p);
+        setTimeout(() => p.remove(), 1100);
+      }
+    }
     try {
       env.classList.add('open');               // 1) solapa gira, 2) carta asoma
       setTimeout(() => {                       // 3) la carta crece hasta ocupar la pantalla
