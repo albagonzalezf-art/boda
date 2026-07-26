@@ -213,8 +213,15 @@
   }
   .hero-greeting{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--wine);margin-bottom:16px}
   .hero-names{
-    font-size:clamp(2.1rem,8.5vw,3.3rem);line-height:1.1;color:var(--green-dark);
+    font-family:'Great Vibes',cursive;font-weight:400;
+    font-size:clamp(2.7rem,11vw,4.3rem);line-height:1.15;color:var(--green-dark);
   }
+  .hn{display:block;clip-path:inset(-15% 103% -15% -3%)}
+  .hero-names.write .hn{animation:write 1.5s cubic-bezier(.4,.1,.3,1) forwards}
+  .hero-names.write .hn:nth-child(2){animation-delay:1.25s;animation-duration:.7s}
+  .hero-names.write .hn:nth-child(3){animation-delay:1.7s}
+  @keyframes write{to{clip-path:inset(-15% -3% -15% -3%)}}
+  @media (prefers-reduced-motion: reduce){.hn{clip-path:none;animation:none}}
   @supports (-webkit-background-clip:text) or (background-clip:text){
     .hero-names{
       background:linear-gradient(105deg,var(--wine) 25%,var(--gold) 42%,#F3E3BC 50%,var(--gold) 58%,var(--wine) 75%);
@@ -227,12 +234,12 @@
   }
   @keyframes foil{to{background-position:-220% center}}
   @media (prefers-reduced-motion: reduce){.hero-names{animation:none}}
-  .amp{font-style:italic;color:var(--wine);font-size:.68em;display:block;margin:4px 0}
+  .amp{color:var(--wine);font-size:.6em;display:block;margin:2px 0}
   .hero-date{margin-top:12px;font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;color:var(--wine)}
   .hero-place{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.35rem;margin-top:8px;color:var(--green)}
   .hero-photo img{width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block;
-    animation:kenburns 16s ease-in-out infinite alternate}
-  @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.09)}}
+    transform-origin:center;will-change:transform;animation:kenburns 13s ease-in-out infinite alternate}
+  @keyframes kenburns{from{transform:scale(1.02)}to{transform:scale(1.17)}}
   @media (prefers-reduced-motion: reduce){.hero-photo img{animation:none}}
   .hero-photo{overflow:hidden;cursor:zoom-in;
     margin:24px auto 0;width:min(64vw,250px,34svh);aspect-ratio:4/5;
@@ -252,7 +259,9 @@
     background:#FFFFFF;border:1px solid var(--gold);border-radius:8px;
     min-width:72px;padding:16px 10px 12px;backdrop-filter:blur(2px);
   }
-  .count-num{font-family:'Cormorant Garamond',serif;font-size:2.3rem;line-height:1;color:var(--green-dark)}
+  .count-num{font-family:'Cormorant Garamond',serif;font-size:2.3rem;line-height:1;color:var(--green-dark);display:inline-block}
+  .count-num.tick{animation:flipnum .5s ease}
+  @keyframes flipnum{0%{transform:rotateX(0)}49%{transform:rotateX(88deg);opacity:.15}51%{transform:rotateX(-88deg)}100%{transform:rotateX(0);opacity:1}}
   .count-lbl{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;margin-top:8px;color:#A38B8F}
 
   /* Agenda */
@@ -366,7 +375,7 @@
 <section id="hero">
   <p class="hero-greeting" id="guestGreeting"></p>
   <p class="eyebrow">¡Nos casamos!</p>
-  <h1 class="hero-names">Alba <span class="amp">&amp;</span> Adrián</h1>
+  <h1 class="hero-names"><span class="hn">Alba</span><span class="hn amp">&amp;</span><span class="hn">Adrián</span></h1>
   <div class="divider"></div>
   <p class="hero-date">3 · Septiembre · 2027</p>
   <p class="hero-place">Lugo, Galicia</p>
@@ -392,7 +401,6 @@
       <text x="282" y="36" text-anchor="middle" font-size="12.5" fill="#4B4A40" font-family="Jost,sans-serif">🇪🇸 Lugo, España</text>
     </svg>
     <p style="font-size:1.7rem;letter-spacing:.25em;margin-top:10px;padding-left:.25em">🇻🇪❤️🇪🇸</p>
-    <p style="font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#A38B8F;margin-top:4px">Dos banderas · un mismo corazón</p>
   </div>
 </section>
 
@@ -627,6 +635,7 @@
     overlay.classList.add('done');
     setTimeout(() => { overlay.style.display = 'none'; }, 1200); // garantiza que nada bloquee el scroll
     startAmbientPetals();
+    setTimeout(() => document.querySelector('.hero-names').classList.add('write'), 500);
   }
   // red de seguridad: si algo fallara en la animación, la invitación siempre queda accesible
   window.addEventListener('error', closeOverlay);
@@ -694,12 +703,19 @@
 
   // --- Cuenta atrás (ceremonia 16:30) ---
   const target = new Date('2027-09-03T16:30:00+02:00').getTime();
+  function setNum(id, v){
+    const el = document.getElementById(id);
+    if (el.textContent != v) {
+      el.textContent = v;
+      if (!reduce) { el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick'); }
+    }
+  }
   function tick(){
     const diff = Math.max(0, target - Date.now());
-    document.getElementById('cd-d').textContent = Math.floor(diff/86400000);
-    document.getElementById('cd-h').textContent = Math.floor(diff%86400000/3600000);
-    document.getElementById('cd-m').textContent = Math.floor(diff%3600000/60000);
-    document.getElementById('cd-s').textContent = Math.floor(diff%60000/1000);
+    setNum('cd-d', Math.floor(diff/86400000));
+    setNum('cd-h', Math.floor(diff%86400000/3600000));
+    setNum('cd-m', Math.floor(diff%3600000/60000));
+    setNum('cd-s', Math.floor(diff%60000/1000));
   }
   tick(); setInterval(tick, 1000);
 
@@ -713,7 +729,7 @@
   });
 
   // --- Formulario (RSVP + canción): pega aquí el enlace de Google Forms cuando esté creado ---
-  const FORM_URL = '';
+  const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSelvaOAnCgOoQjaPqU8Th2tuvILOilqWb4bQQmT_nU-m2AX9w/viewform';
   function openForm(e){
     e.preventDefault();
     if (FORM_URL) window.open(FORM_URL, '_blank');
