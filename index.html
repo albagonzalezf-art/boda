@@ -100,15 +100,17 @@
     opacity:0;pointer-events:none;transition:opacity .7s ease .2s;
   }
   .env.grow .letter{z-index:8;cursor:pointer}
-  .letter > *:not(.l-btn){clip-path:inset(-15% 103% -15% -3%)}
-  .env.grow .letter > *:not(.l-btn){animation:write 1s cubic-bezier(.4,.1,.3,1) forwards}
-  .env.grow .letter > *:nth-child(1){animation-duration:1.4s}
+  .letter > *:not(.l-btn){opacity:0}
+  .env.grow .letter > *:not(.l-btn){animation:scribe .95s cubic-bezier(.3,.2,.2,1) forwards}
+  .env.grow .letter > *:nth-child(1){animation-duration:1.3s}
   .env.grow .letter > *:nth-child(2){animation-delay:1.3s}
   .env.grow .letter > *:nth-child(3){animation-delay:2.2s;animation-duration:.5s}
   .env.grow .letter > *:nth-child(4){animation-delay:2.6s}
   .env.grow .letter > *:nth-child(5){animation-delay:3.5s;animation-duration:.5s}
-  .env.grow .letter > *:nth-child(6){animation-delay:3.9s;animation-duration:1.7s}
-  @media (prefers-reduced-motion: reduce){.letter > *{clip-path:none !important;animation:none !important}}
+  .env.grow .letter > *:nth-child(6){animation-delay:3.9s;animation-duration:1.6s}
+  .letter.forced > *{opacity:1 !important;transform:none !important}
+  @keyframes scribe{from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){.letter > *{opacity:1 !important;animation:none !important}}
   #overlay.grow .overlay-to,#overlay.grow .overlay-name,#overlay.grow .overlay-hint{
     opacity:0;visibility:hidden;pointer-events:none;transition:opacity .5s,visibility .5s;
   }
@@ -230,22 +232,22 @@
   .hero-names.write .hn{animation:ink 1.3s ease forwards}
   .hero-names.write .hn:nth-child(2){animation-delay:1.1s;animation-duration:.7s}
   .hero-names.write .hn:nth-child(3){animation-delay:1.55s}
-  @keyframes ink{from{opacity:0;filter:blur(7px);transform:translateY(10px)}to{opacity:1;filter:none;transform:none}}
+  @keyframes ink{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
   @keyframes write{to{clip-path:inset(-15% -3% -15% -3%)}}
   @media (prefers-reduced-motion: reduce){.hn{opacity:1 !important;animation:none !important}}
   @supports (-webkit-background-clip:text) or (background-clip:text){
-    .hero-names{
+    .foil{
+      display:inline-block;
       background:linear-gradient(105deg,var(--wine) 25%,var(--gold) 42%,#F3E3BC 50%,var(--gold) 58%,var(--wine) 75%);
       background-size:220% auto;
       -webkit-background-clip:text;background-clip:text;
       -webkit-text-fill-color:transparent;color:transparent;
       animation:foil 6s linear infinite;
     }
-    .hero-names .amp{-webkit-text-fill-color:transparent;color:transparent}
   }
   @keyframes foil{to{background-position:-220% center}}
   @media (prefers-reduced-motion: reduce){.hero-names{animation:none}}
-  .amp{color:var(--wine);font-size:.6em;display:block;margin:2px 0}
+  .amp{color:var(--wine);font-size:.62em}
   .hero-date{margin-top:12px;font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;color:var(--wine)}
   .hero-place{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.35rem;margin-top:8px;color:var(--green)}
   .hero-photo img{width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block;
@@ -387,7 +389,7 @@
 <section id="hero">
   <p class="hero-greeting" id="guestGreeting"></p>
   <p class="eyebrow">¡Nos casamos!</p>
-  <h1 class="hero-names"><span class="hn">Alba</span><span class="hn amp">&amp;</span><span class="hn">Adrián</span></h1>
+  <h1 class="hero-names"><span class="hn"><span class="foil">Alba</span></span><span class="hn"><span class="foil amp">&amp;</span></span><span class="hn"><span class="foil">Adrián</span></span></h1>
   <div class="divider"></div>
   <p class="hero-date">3 · Septiembre · 2027</p>
   <p class="hero-place">Lugo, Galicia</p>
@@ -689,6 +691,7 @@
           letter.style.transform = 'translateY(-8%) scale(' + s.toFixed(3) + ') rotate(0deg)';
           env.classList.add('grow');
           overlay.classList.add('grow');
+          setTimeout(() => letter.classList.add('forced'), 7000);  // el texto siempre acaba visible
         } catch(e){ closeOverlay(); }
       }, reduce ? 80 : 1600);
     } catch(e){ closeOverlay(); }
