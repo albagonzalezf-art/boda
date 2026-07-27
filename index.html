@@ -303,24 +303,24 @@
     font-size:clamp(2.7rem,11vw,4.3rem);line-height:1.15;color:var(--green-dark);
   }
   .hn{display:block}
-  .wrt,.letter > *:not(.l-btn){
+  .pre-write,.letter > *:not(.l-btn){
     -webkit-mask-image:linear-gradient(90deg,#000 50%,transparent 50%);
     mask-image:linear-gradient(90deg,#000 50%,transparent 50%);
     -webkit-mask-size:220% 100%;mask-size:220% 100%;
     -webkit-mask-position:100% 0;mask-position:100% 0;
+    opacity:0;
   }
-  .wrt,.letter > *:not(.l-btn){opacity:0}
-  #hero.writing .wrt,section.in:not(#hero) .wrt{animation:writeIn 1.05s ease var(--d,0s) forwards}
+  .pre-write.go{animation:writeIn 1.05s ease var(--d,0s) forwards}
   @keyframes writeIn{
     from{opacity:0;-webkit-mask-position:100% 0;mask-position:100% 0}
     to{opacity:1;-webkit-mask-position:0 0;mask-position:0 0}
   }
   #hero .hero-photo{opacity:0;transform:scale(.94)}
-  #hero.writing .hero-photo{animation:photoIn 1.3s ease 5.1s forwards}
+  #hero.shown .hero-photo{animation:photoIn 1.3s ease 5.1s forwards}
   @keyframes photoIn{to{opacity:1;transform:scale(1)}}
   .nomask{-webkit-mask-image:none !important;mask-image:none !important;opacity:1 !important}
   @media (prefers-reduced-motion: reduce){
-    .wrt,.letter > *{-webkit-mask-image:none !important;mask-image:none !important;animation:none !important}
+    .pre-write,.letter > *{-webkit-mask-image:none !important;mask-image:none !important;animation:none !important;opacity:1 !important}
     #hero .hero-photo{opacity:1;transform:none}
   }
   @keyframes write{to{clip-path:inset(-15% -3% -15% -3%)}}
@@ -870,11 +870,24 @@
 <script>
   // --- Portada: se escribe sola al entrar ---
   const heroSec = document.getElementById('hero');
+  const trazos = [...document.querySelectorAll('.wrt')];
+  if (!reduce) {
+    trazos.forEach(e => e.classList.add('pre-write'));
+    // cada rótulo y título se escribe al asomar en pantalla
+    if ('IntersectionObserver' in window) {
+      const wObs = new IntersectionObserver(es => es.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('go'); wObs.unobserve(e.target); }
+      }), {threshold: 0.4});
+      document.querySelectorAll('section:not(#hero) .wrt').forEach(el => wObs.observe(el));
+    } else {
+      trazos.forEach(e => e.classList.add('go'));
+    }
+  }
   // red de seguridad: pase lo que pase, todo acaba visible
   setTimeout(() => {
-    document.querySelectorAll('.wrt, .letter > *').forEach(e => e.classList.add('nomask'));
+    document.querySelectorAll('.wrt,.letter > *').forEach(e => e.classList.add('nomask'));
     document.querySelector('.hero-photo').style.opacity = 1;
-  }, 12000);
+  }, 14000);
 
   // --- Personalización: ?invitado=Nombre ---
   const params = new URLSearchParams(location.search);
@@ -914,7 +927,7 @@
   function closeOverlay(){
     overlay.classList.add('done');
     setTimeout(() => { overlay.style.display = 'none'; }, 1200); // garantiza que nada bloquee el scroll
-    setTimeout(() => heroSec.classList.add('writing'), 400);
+    setTimeout(() => { heroSec.classList.add('shown'); heroSec.querySelectorAll('.wrt').forEach(e => e.classList.add('go')); }, 400);
   }
   // red de seguridad: si algo fallara en la animación, la invitación siempre queda accesible
   window.addEventListener('error', closeOverlay);
