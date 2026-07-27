@@ -51,7 +51,7 @@
   .overlay-name{color:#FFF7EC;font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;font-size:2.15rem;line-height:1.2;margin-bottom:32px;text-align:center;max-width:15ch;text-shadow:0 2px 12px rgba(45,8,16,.5)}
   .env-scene{perspective:1400px}
   .env{
-    position:relative;width:min(92vw,430px);aspect-ratio:10/7;
+    position:relative;width:min(92vw,430px);aspect-ratio:10/7.4;
     transform-style:preserve-3d;
   }
   .env-back{
@@ -70,18 +70,18 @@
       linear-gradient(160deg,#FFFDF7,#FAF2E1);
     border-radius:4px;
     border:1px solid #E6D6BB;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.2em;
     z-index:2;
     transition:transform 1.2s cubic-bezier(.2,.85,.25,1) .8s, box-shadow 1.2s .8s;
     box-shadow:0 4px 14px rgba(0,0,0,.1), inset 0 0 26px rgba(140,115,80,.08);
-    padding:16px;text-align:center;
+    padding:1em;text-align:center;font-size:calc(min(92vw, 430px) / 33);
   }
   .letter::before{content:"";position:absolute;inset:9px;border:1px solid rgba(212,169,70,.55);border-radius:2px;pointer-events:none}
   .letter::after{content:"";position:absolute;inset:13px;border:1px dotted rgba(147,55,74,.35);border-radius:2px;pointer-events:none}
-    .letter .l-to{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.8rem;letter-spacing:.02em;color:#9A7B7F;line-height:1.4;max-width:92%;text-align:center;text-wrap:balance}
-  .letter .l-eyebrow{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:.6rem;letter-spacing:.26em;padding-left:.26em;text-transform:uppercase;color:#9A7B7F}
-  .letter .l-amp{font-family:'Cormorant Garamond',serif;font-weight:400;font-style:normal;color:#B08A3E;font-size:1.1rem;line-height:1.1}
-  .letter .l-names{font-family:'Great Vibes',cursive;font-size:1.85rem;line-height:1.15;letter-spacing:.01em;color:var(--wine)}
+    .letter .l-to{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.62em;letter-spacing:.02em;color:#9A7B7F;line-height:1.4;max-width:92%;text-align:center;text-wrap:balance}
+  .letter .l-eyebrow{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:.46em;letter-spacing:.26em;padding-left:.26em;text-transform:uppercase;color:#9A7B7F}
+  .letter .l-amp{font-family:'Great Vibes',cursive;font-weight:400;font-style:normal;color:#B08A3E;font-size:.95em;line-height:1.2}
+  .letter .l-names{font-family:'Great Vibes',cursive;font-size:1.5em;line-height:1.15;letter-spacing:.01em;color:var(--wine)}
   .letter .l-orn{line-height:0;margin:2px 0}
   .letter .l-date{font-size:.56rem;letter-spacing:.26em;padding-left:.26em;text-transform:uppercase;color:var(--green)}
   .letter{will-change:transform}
@@ -93,8 +93,8 @@
   /* fase final: la carta crece y el sobre se desvanece debajo */
   .l-btn{
     position:relative;overflow:hidden;isolation:isolate;align-self:center;
-    margin:11px auto 0;background:var(--green);color:#FBF9F3;border:none;border-radius:24px;
-    padding:8px 20px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:.68rem;letter-spacing:.18em;
+    margin:.7em auto 0;background:var(--green);color:#FBF9F3;border:none;border-radius:2em;
+    padding:.6em 1.5em;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:.52em;letter-spacing:.18em;
     text-indent:.18em;text-align:center;text-transform:uppercase;cursor:pointer;
     opacity:0;pointer-events:none;transition:opacity .7s ease 5.6s,background .25s;
     box-shadow:0 3px 10px rgba(94,27,41,.25);
@@ -128,7 +128,7 @@
   #overlay.grow .overlay-to,#overlay.grow .overlay-name,#overlay.grow .overlay-hint{
     opacity:0;visibility:hidden;pointer-events:none;transition:opacity .5s,visibility .5s;
   }
-  .l-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.76rem;line-height:1.35;color:#5C4B3C;max-width:26ch;margin:0}
+  .l-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.58em;line-height:1.35;color:#5C4B3C;max-width:26ch;margin:0}
   .env-side{position:absolute;inset:0;z-index:3;border-radius:10px}
   .env-side.left{
     background:linear-gradient(100deg,#EBDCC1,#DFC9A3 70%);
@@ -276,7 +276,7 @@
   }
   @keyframes foil{to{background-position:-220% center}}
   @media (prefers-reduced-motion: reduce){.hero-names{animation:none}}
-  .amp{font-family:'Cormorant Garamond',serif;font-weight:400;font-style:normal;color:#B08A3E;font-size:.4em;-webkit-text-fill-color:#B08A3E;line-height:1.7}
+  .amp{font-family:'Great Vibes',cursive;font-weight:400;font-style:normal;color:#B08A3E;font-size:.6em;-webkit-text-fill-color:#B08A3E;line-height:1.35}
   .hero-date{margin-top:12px;font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;color:var(--wine)}
   .hero-place{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.35rem;margin-top:8px;color:var(--green)}
   .hero-photo img{width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block;
@@ -726,7 +726,7 @@
     <use href="#bandOne" clip-path="url(#over)"/>
   </svg>
   <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;display:block">Con todo nuestro cariño,</span>
-  <span style="font-family:'Great Vibes',cursive;font-style:normal;font-size:2.1rem;line-height:1.4;display:block;color:var(--wine)">Adrián <span class="amp" style="font-size:.5em">&amp;</span> Alba</span>
+  <span style="font-family:'Great Vibes',cursive;font-style:normal;font-size:2.1rem;line-height:1.4;display:block;color:var(--wine)">Adrián <span class="amp" style="font-size:.62em">&amp;</span> Alba</span>
 </footer>
 
 <script>
