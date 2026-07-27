@@ -380,6 +380,21 @@
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
   .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none}}
+  /* Preguntas frecuentes */
+  .faq{margin-top:24px;text-align:left}
+  .faq details{
+    background:#FDF3E3;border:1.5px solid var(--gold);border-radius:10px;
+    padding:14px 18px;margin-bottom:12px;
+  }
+  .faq summary{
+    cursor:pointer;list-style:none;
+    font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.08rem;
+    color:var(--green-dark);display:flex;justify-content:space-between;align-items:center;gap:14px;
+  }
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--gold);font-size:1.5rem;line-height:1;flex:none}
+  .faq details[open] summary::after{content:"–"}
+  .faq details p{margin-top:10px;font-size:1.02rem;line-height:1.55;color:#6E585C}
   footer{position:relative;padding:60px 24px 96px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--green)}
 </style>
 </head>
@@ -561,6 +576,9 @@
       <p class="tl-desc">El broche de oro a una noche inolvidable</p>
     </div>
   </div>
+
+  <a class="btn" href="boda.ics" download="Boda-Adrian-y-Alba.ics" style="margin-top:30px">Añadir a mi calendario</a>
+  <p style="font-size:.95rem;color:#8A6F73;margin-top:10px;font-style:italic">Te avisará una semana antes y la víspera</p>
 </section>
 
 <!-- ======= UBICACIONES ======= -->
@@ -663,6 +681,30 @@
       <path d="M176 154 L 170 234 L 196 234 L 206 172 L 216 234 L 242 234 L 236 154"/>
       <path d="M176 154 L 236 154" stroke-width="1.6"/>
     </svg>
+  </div>
+</section>
+
+<!-- ======= PREGUNTAS FRECUENTES ======= -->
+<section id="faq">
+  <p class="eyebrow">Antes de venir</p>
+  <h2 class="sec-title">Preguntas frecuentes</h2>
+  <div class="faq">
+    <details>
+      <summary>¿Pueden venir los niños?</summary>
+      <p>¡Claro que sí! Los peques son más que bienvenidos y nos hará mucha ilusión que celebren este día con nosotros.</p>
+    </details>
+    <details>
+      <summary>¿A qué hora termina la fiesta?</summary>
+      <p>La celebración se alargará hasta las <strong>04:00 h</strong>. Habrá autobús de vuelta al centro de Lugo al finalizar, así que podéis disfrutar sin preocuparos por la vuelta.</p>
+    </details>
+    <details>
+      <summary>¿Y si llueve?</summary>
+      <p>Estamos preparados: el pazo cuenta con un <strong>área cubierta</strong> donde se trasladaría el aperitivo si el tiempo no acompaña. La fiesta seguirá igual de bonita, llueva o no.</p>
+    </details>
+    <details>
+      <summary>¿Qué tiempo hará?</summary>
+      <p>Septiembre en Galicia es cambiante: puede hacer un día espléndido y refrescar bastante al caer la noche. Os recomendamos traer una chaqueta, un chal o algo de abrigo para la parte final de la fiesta.</p>
+    </details>
   </div>
 </section>
 

@@ -1,0 +1,26 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Adrian y Alba//Boda 2027//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:boda-adrian-alba-20270903@albagonzalezf-art.github.io
+DTSTAMP:20260727T090000Z
+DTSTART:20270903T143000Z
+DTEND:20270904T020000Z
+SUMMARY:Boda de Adrian y Alba
+LOCATION:Catedral de Lugo, Lugo, Espana
+DESCRIPTION:Ceremonia en la Catedral de Lugo a las 16:30 h y celebracion
+  en el Pazo de Treilan. Dress code: formal tarde-noche.
+BEGIN:VALARM
+TRIGGER:-P7D
+ACTION:DISPLAY
+DESCRIPTION:En una semana es la boda de Adrian y Alba
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Manana es la boda de Adrian y Alba
+END:VALARM
+END:VEVENT
+END:VCALENDAR
