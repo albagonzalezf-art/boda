@@ -170,10 +170,17 @@
 
 
   .seal-mono{
-    font-family:'Cormorant Garamond',serif;font-weight:400;font-style:normal;
-    font-size:1.05rem;line-height:1;letter-spacing:.28em;text-indent:.28em;
-    color:#F3DED3;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    color:#F6E4DA;line-height:1;
     animation:pulse 2.4s infinite;
+  }
+  .seal-mono b{
+    font-family:'Great Vibes',cursive;font-weight:400;
+    font-size:.95rem;line-height:1.15;white-space:nowrap;
+  }
+  .seal-mono i{
+    font-family:'Cormorant Garamond',serif;font-style:normal;
+    font-size:.6rem;color:#E6D3A7;line-height:1.1;margin:1px 0;
   }
   .seal:hover{transform:translate(-50%,-50%) scale(1.06)}
   .seal:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
@@ -508,7 +515,7 @@
       <span class="env-sheen"></span>
       <span class="seal-halo"></span>
       <span class="env-hint">Toca el sello para abrir</span>
-      <button class="seal" id="openSeal" aria-label="Abrir invitación"><span class="seal-mono">A&amp;A</span></button>
+      <button class="seal" id="openSeal" aria-label="Abrir invitación"><span class="seal-mono"><b>Adrián</b><i>&amp;</i><b>Alba</b></span></button>
     </div>
   </div>
   <p class="overlay-count" id="envCount"></p>
