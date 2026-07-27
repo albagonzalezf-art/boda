@@ -70,7 +70,7 @@
       linear-gradient(160deg,#FFFDF7,#FAF2E1);
     border-radius:4px;
     border:1px solid #E6D6BB;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
     z-index:2;
     transition:transform 1.2s cubic-bezier(.2,.85,.25,1) .8s, box-shadow 1.2s .8s;
     box-shadow:0 4px 14px rgba(0,0,0,.1), inset 0 0 26px rgba(140,115,80,.08);
@@ -81,7 +81,7 @@
     .letter .l-to{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.8rem;letter-spacing:.02em;color:#9A7B7F;line-height:1.4;max-width:92%;text-align:center;text-wrap:balance}
   .letter .l-eyebrow{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:.6rem;letter-spacing:.26em;padding-left:.26em;text-transform:uppercase;color:#9A7B7F}
   .letter .l-amp{font-family:'Cormorant Garamond',serif;font-weight:400;font-style:normal;color:#B08A3E;font-size:1.1rem;line-height:1.1}
-  .letter .l-names{font-family:'Great Vibes',cursive;font-size:2.05rem;line-height:1.15;letter-spacing:.01em;color:var(--wine)}
+  .letter .l-names{font-family:'Great Vibes',cursive;font-size:1.85rem;line-height:1.15;letter-spacing:.01em;color:var(--wine)}
   .letter .l-orn{line-height:0;margin:2px 0}
   .letter .l-date{font-size:.56rem;letter-spacing:.26em;padding-left:.26em;text-transform:uppercase;color:var(--green)}
   .letter{will-change:transform}
@@ -93,9 +93,9 @@
   /* fase final: la carta crece y el sobre se desvanece debajo */
   .l-btn{
     position:relative;overflow:hidden;isolation:isolate;align-self:center;
-    margin:10px auto 0;background:var(--green);color:#FBF9F3;border:none;border-radius:24px;
-    padding:9px 22px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:.72rem;letter-spacing:.2em;
-    text-transform:uppercase;cursor:pointer;
+    margin:11px auto 0;background:var(--green);color:#FBF9F3;border:none;border-radius:24px;
+    padding:8px 20px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:.68rem;letter-spacing:.18em;
+    text-indent:.18em;text-align:center;text-transform:uppercase;cursor:pointer;
     opacity:0;pointer-events:none;transition:opacity .7s ease 5.6s,background .25s;
     box-shadow:0 3px 10px rgba(94,27,41,.25);
   }
@@ -242,8 +242,9 @@
   }
   .hero-banner{
     display:flex;align-items:center;justify-content:center;gap:14px;
-    font-family:'Great Vibes',cursive;font-size:1.85rem;letter-spacing:.01em;
-    color:var(--gold);margin-bottom:14px;
+    font-family:'Cormorant Garamond',serif;font-weight:600;font-size:.82rem;
+    letter-spacing:.34em;text-indent:.34em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:16px;
   }
   .hero-banner::before,.hero-banner::after{
     content:"";height:1px;width:36px;background:linear-gradient(90deg,transparent,var(--gold));
@@ -328,7 +329,7 @@
   .btn{
     display:inline-block;background:var(--wine);color:var(--ivory);
     border:none;border-radius:30px;padding:13px 32px;
-    font-family:'Cormorant Garamond',serif;font-weight:600;font-size:.95rem;letter-spacing:.2em;text-transform:uppercase;
+    font-family:'Cormorant Garamond',serif;font-weight:600;font-size:.95rem;letter-spacing:.2em;text-indent:.2em;text-align:center;text-transform:uppercase;
     text-decoration:none;cursor:pointer;transition:background .25s,transform .2s;
   }
   .btn:hover{background:var(--wine-dark);transform:translateY(-1px)}
