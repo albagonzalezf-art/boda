@@ -875,6 +875,8 @@
 </footer>
 
 <script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   // --- Portada: se escribe sola al entrar ---
   const heroSec = document.getElementById('hero');
   const trazos = [...document.querySelectorAll('.wrt')];
@@ -908,7 +910,6 @@
 
   // --- Pétalos flotando ---
   const overlay = document.getElementById('overlay');
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!reduce) {
     for (let i = 0; i < 16; i++) {
       const p = document.createElement('span');
