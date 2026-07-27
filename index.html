@@ -126,7 +126,7 @@
   .letter.forced > *{opacity:1 !important;transform:none !important}
   @keyframes scribe{from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:none}}
   @media (prefers-reduced-motion: reduce){.letter > *{opacity:1 !important;animation:none !important}}
-  #overlay.grow .overlay-to,#overlay.grow .overlay-name{
+  #overlay.grow .overlay-to,#overlay.grow .overlay-name,#overlay.grow .overlay-count{
     opacity:0;visibility:hidden;pointer-events:none;transition:opacity .5s,visibility .5s;
   }
   .l-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.58em;line-height:1.35;color:#5C4B3C;max-width:26ch;margin:0}
@@ -217,13 +217,10 @@
   @keyframes floatEnv{0%,100%{translate:0 0}50%{translate:0 -9px}}
   .env.open{animation:none}
   .env.open .env-sheen,.env.open .seal-halo{opacity:0;transition:opacity .4s}
-  .env-count{
-    position:absolute;left:0;right:0;bottom:19%;z-index:6;text-align:center;
-    font-family:'Cormorant Garamond',serif;font-weight:600;font-size:.72rem;
-    letter-spacing:.26em;text-indent:.26em;text-transform:uppercase;
-    color:rgba(122,36,52,.7);pointer-events:none;
+  .overlay-count{
+    font-family:'Great Vibes',cursive;color:var(--gold-soft);
+    font-size:1.5rem;margin-top:26px;text-align:center;
   }
-  .env.grow .env-count{opacity:0;transition:opacity .4s}
   .env-hint{
     position:absolute;left:0;right:0;bottom:7%;z-index:6;text-align:center;
     font-family:'Great Vibes',cursive;font-size:1.35rem;color:rgba(122,36,52,.82);
@@ -451,12 +448,6 @@
   @keyframes busMove{0%,100%{transform:translateX(-9px)}50%{transform:translateX(9px)}}
   .ico-moon{transform-origin:50% 62%;animation:moonWobble 4.2s ease-in-out infinite}
   @keyframes moonWobble{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
-  .dc-fill path{fill-opacity:0;transition:fill-opacity 1.1s ease}
-  .f-dress{fill:#F0D5D8}
-  .f-jacket{fill:#6E2131}
-  .f-trousers{fill:#5E1B29}
-  .f-bow{fill:#C9A96A}
-  #dresscode svg.filled .dc-fill path{fill-opacity:1}
   .dc-dress,.dc-suit{transform-box:fill-box;transform-origin:50% 0%}
   #dresscode svg.dancing .dc-dress{animation:danceA 2.6s ease-in-out infinite}
   #dresscode svg.dancing .dc-suit{animation:danceB 2.6s ease-in-out infinite}
@@ -464,7 +455,6 @@
   @keyframes danceB{0%,100%{transform:rotate(2.6deg)}50%{transform:rotate(-2.6deg)}}
   @media (prefers-reduced-motion: reduce){
     .ico-bus,.ico-moon,.dc-dress,.dc-suit{animation:none}
-    .dc-fill path{fill-opacity:1}
   }
   footer{position:relative;padding:60px 24px 96px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--green)}
 </style>
@@ -491,12 +481,12 @@
         <button class="l-btn" id="enterBtn">Descubrir la invitación</button>
       </div>
       <div class="env-side left"></div>
+  <p class="overlay-count" id="envCount"></p>
       <div class="env-side right"></div>
       <div class="env-bottom"></div>
       <div class="env-flap"></div>
       <span class="env-sheen"></span>
       <span class="seal-halo"></span>
-      <span class="env-count" id="envCount"></span>
       <span class="env-hint">Toca el sello para abrir</span>
       <button class="seal" id="openSeal" aria-label="Abrir invitación"><span class="seal-mono">A&amp;A</span></button>
     </div>
@@ -751,14 +741,6 @@
     <p style="font-size:.85rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);font-weight:400">Formal tarde-noche</p>
     <p style="margin-top:8px;color:#6E585C">Caballeros con traje,<br>damas con vestido largo</p>
     <svg viewBox="0 0 300 250" style="width:100%;max-width:250px;height:auto;margin:22px auto 6px;display:block" fill="none" stroke="#7A2434" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Ilustración de vestido largo y traje">
-      <g class="dc-fill">
-        <path class="f-dress" d="M62 34 C 70 42, 94 42, 102 34 C 104 58, 100 82, 92 102 C 88 112, 88 120, 92 132 C 100 158, 112 184, 126 210 C 128 216, 126 222, 118 224 C 96 230, 62 230, 44 224 C 36 222, 34 216, 37 210 C 50 184, 62 158, 70 132 C 74 120, 74 112, 70 102 C 62 82, 58 58, 62 34 Z"/>
-        <path class="f-jacket" d="M172 62 C 168 96, 170 126, 174 152 L 238 152 C 242 126, 244 96, 240 62 C 232 52, 180 52, 172 62 Z"/>
-        <path class="f-jacket" d="M188 38 L 164 46 C 155 74, 152 110, 153 144 L 169 146 C 167 114, 168 86, 172 62 Z"/>
-        <path class="f-jacket" d="M224 38 L 248 46 C 257 74, 260 110, 259 144 L 243 146 C 245 114, 244 86, 240 62 Z"/>
-        <path class="f-trousers" d="M176 154 L 170 234 L 196 234 L 206 172 L 216 234 L 242 234 L 236 154 Z"/>
-        <path class="f-bow" d="M199 44 L 206 48 L 213 44 L 213 52 L 206 48 L 199 52 Z"/>
-      </g>
       <g class="dc-dress">
       <!-- vestido -->
       <path d="M62 34 C 70 42, 94 42, 102 34 C 104 58, 100 82, 92 102 C 88 112, 88 120, 92 132 C 100 158, 112 184, 126 210 C 128 216, 126 222, 118 224 C 96 230, 62 230, 44 224 C 36 222, 34 216, 37 210 C 50 184, 62 158, 70 132 C 74 120, 74 112, 70 102 C 62 82, 58 58, 62 34 Z"/>
@@ -787,7 +769,12 @@
       <path d="M176 154 L 236 154" stroke-width="1.6"/>
           </g>
     </svg>
-      <p class="serif" style="font-style:italic;font-size:1.05rem;line-height:1.5;color:#8A6F73;max-width:32ch;margin:14px auto 0">Chicas: parte de la celebración será en el jardín exterior.</p>
+      <p class="serif" style="font-style:italic;font-size:1.05rem;line-height:1.5;color:#8A6F73;max-width:32ch;margin:14px auto 0">Para las chicas: el aperitivo será en el jardín, ¡tenedlo en cuenta al elegir el calzado!<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A2434" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-4px;margin-left:6px">
+      <circle cx="12" cy="12" r="9.4"/>
+      <circle cx="8.6" cy="10.2" r=".95" fill="#7A2434" stroke="none"/>
+      <path d="M13.3 10.4c.7-.9 1.9-.9 2.6 0"/>
+      <path d="M8 14.6c2.2 1.9 5.8 1.9 8 0"/>
+    </svg></p>
   </div>
 </section>
 
@@ -1049,7 +1036,7 @@
   // --- El vestido y el traje se dibujan solos al llegar a la sección ---
   const dcSvg = document.querySelector('#dresscode svg');
   if (dcSvg && !reduce && 'IntersectionObserver' in window) {
-    const trazos = [...dcSvg.querySelectorAll('path')].filter(p => !p.closest('.dc-fill'));
+    const trazos = [...dcSvg.querySelectorAll('path')];
     const puntos = [...dcSvg.querySelectorAll('circle')];
     trazos.forEach(p => {
       const L = p.getTotalLength();
@@ -1062,8 +1049,7 @@
       trazos.forEach((p, i) => setTimeout(() => { p.style.strokeDashoffset = 0; }, i * 110));
       const fin = trazos.length * 110 + 600;
       setTimeout(() => puntos.forEach(c => { c.style.opacity = 1; }), fin);
-      setTimeout(() => dcSvg.classList.add('filled'), fin + 200);
-      setTimeout(() => dcSvg.classList.add('dancing'), fin + 1400);
+      setTimeout(() => dcSvg.classList.add('dancing'), fin + 700);
     };
     const dcObs = new IntersectionObserver(es => es.forEach(e => {
       if (e.isIntersecting) { dibujar(); dcObs.disconnect(); }
