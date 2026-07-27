@@ -55,11 +55,12 @@
     transform-style:preserve-3d;
   }
   .env-back{
-    position:absolute;inset:0;border-radius:10px;
+    position:absolute;inset:0;border-radius:11px;
     background:
-      repeating-linear-gradient(45deg,rgba(120,90,50,.03) 0 3px,transparent 3px 6px),
-      linear-gradient(170deg,#F3E7D2,#E2CFAE);
-    box-shadow:0 30px 70px rgba(0,0,0,.5);
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.34 0 0 0 0 0.22 0 0 0 0.05 0'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>"),
+      radial-gradient(120% 90% at 30% 12%, rgba(255,255,255,.55), transparent 62%),
+      linear-gradient(165deg,#F6EBD8 0%,#EDDFC4 52%,#DFCCA9 100%);
+    box-shadow:0 34px 62px rgba(0,0,0,.5), inset 0 0 70px rgba(150,118,74,.14);
     z-index:1;
   }
   .letter{
@@ -125,43 +126,43 @@
   .letter.forced > *{opacity:1 !important;transform:none !important}
   @keyframes scribe{from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:none}}
   @media (prefers-reduced-motion: reduce){.letter > *{opacity:1 !important;animation:none !important}}
-  #overlay.grow .overlay-to,#overlay.grow .overlay-name,#overlay.grow .overlay-hint{
+  #overlay.grow .overlay-to,#overlay.grow .overlay-name{
     opacity:0;visibility:hidden;pointer-events:none;transition:opacity .5s,visibility .5s;
   }
   .l-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.58em;line-height:1.35;color:#5C4B3C;max-width:26ch;margin:0}
   .env-side{position:absolute;inset:0;z-index:3;border-radius:10px}
   .env-side.left{
-    background:linear-gradient(100deg,#EBDCC1,#DFC9A3 70%);
-    clip-path:polygon(0 0, 54% 50%, 0 100%);
-    filter:drop-shadow(1px 0 1px rgba(120,90,50,.25));
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.34 0 0 0 0 0.22 0 0 0 0.05 0'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>"), linear-gradient(96deg,#F4E9D4 0%,#E9D9B9 62%,#DFCCA6 100%);
+    clip-path:polygon(0 0, 52% 50%, 0 100%);
+    filter:drop-shadow(2px 0 3px rgba(122,92,48,.26));
   }
   .env-side.right{
-    background:linear-gradient(260deg,#EBDCC1,#DFC9A3 70%);
-    clip-path:polygon(100% 0, 46% 50%, 100% 100%);
-    filter:drop-shadow(-1px 0 1px rgba(120,90,50,.25));
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.34 0 0 0 0 0.22 0 0 0 0.05 0'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>"), linear-gradient(264deg,#F4E9D4 0%,#E9D9B9 62%,#DFCCA6 100%);
+    clip-path:polygon(100% 0, 48% 50%, 100% 100%);
+    filter:drop-shadow(-2px 0 3px rgba(122,92,48,.26));
   }
   .env-bottom{
-    position:absolute;inset:0;z-index:4;border-radius:10px;
-    background:linear-gradient(0deg,#F0E2C8,#E3CEA9 80%);
-    clip-path:polygon(0 100%, 50% 40%, 100% 100%);
-    filter:drop-shadow(0 -1px 2px rgba(120,90,50,.3));
+    position:absolute;inset:0;z-index:4;border-radius:11px;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.34 0 0 0 0 0.22 0 0 0 0.05 0'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>"), linear-gradient(6deg,#F7EDDB 0%,#EFE2C8 55%,#E6D5B4 100%);
+    clip-path:polygon(0 100%, 50% 41%, 100% 100%);
+    filter:drop-shadow(0 -3px 5px rgba(122,92,48,.34));
   }
   .env-flap{
-    position:absolute;left:0;right:0;top:0;height:56%;
-    background:linear-gradient(180deg,#EAD9BB,#D2B88C);
+    position:absolute;left:0;right:0;top:0;height:58%;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.34 0 0 0 0 0.22 0 0 0 0.05 0'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>"), linear-gradient(178deg,#F8EFDE 0%,#EFE1C5 46%,#E1CEA9 84%,#D6C098 100%);
     clip-path:polygon(0 0, 100% 0, 50% 100%);
     transform-origin:top center;z-index:5;
     transition:transform .9s cubic-bezier(.6,.05,.3,1),z-index 0s .9s;
     border-radius:10px 10px 0 0;
-    filter:drop-shadow(0 5px 6px rgba(0,0,0,.18));
+    filter:drop-shadow(0 6px 7px rgba(90,64,32,.32));
   }
   .env.open .env-flap{transform:rotateX(180deg);z-index:1}
   .seal{
     position:absolute;left:50%;top:56%;transform:translate(-50%,-50%);
-    width:96px;height:96px;border-radius:50%;z-index:6;
+    width:104px;height:104px;border-radius:50%;z-index:7;
     background:
-      radial-gradient(circle at 30% 26%,rgba(255,235,230,.85) 0 6%,transparent 30%),
-      radial-gradient(circle at 30% 28%,#B4515F,var(--wine) 58%,#3F0E18);
+      radial-gradient(circle at 32% 24%,rgba(255,236,232,.5) 0 4%,transparent 34%),
+      radial-gradient(circle at 34% 30%,#A94355,var(--wine) 55%,#4B1220 88%,#380C15);
     color:#F6DFD3;
     display:flex;align-items:center;justify-content:center;
     border:none;cursor:pointer;
@@ -174,7 +175,7 @@
     z-index:-1;filter:blur(1px);
     clip-path:polygon(50% 0%, 61% 4%, 72% 2%, 80% 10%, 91% 12%, 93% 22%, 100% 30%, 97% 41%, 100% 52%, 94% 61%, 95% 72%, 86% 78%, 82% 89%, 71% 89%, 62% 97%, 50% 93%, 38% 98%, 28% 91%, 17% 90%, 13% 79%, 4% 73%, 6% 61%, 0% 51%, 4% 40%, 1% 29%, 9% 21%, 11% 11%, 22% 9%, 29% 2%, 40% 5%);
   }
-  .seal{width:102px;height:102px}
+
   .seal-mono{
     font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;
     font-size:1.5rem;line-height:1;letter-spacing:.06em;
@@ -192,7 +193,12 @@
   @keyframes burst{
     to{transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(.4);opacity:0}
   }
-  .overlay-hint{font-family:'Great Vibes',cursive;margin-top:30px;color:var(--gold-soft);font-size:1.4rem;animation:pulse 2.4s infinite}
+  .env-hint{
+    position:absolute;left:0;right:0;bottom:7%;z-index:6;text-align:center;
+    font-family:'Great Vibes',cursive;font-size:1.35rem;color:#9C7A54;
+    animation:pulse 2.4s infinite;pointer-events:none;
+  }
+  .env.grow .env-hint{opacity:0;transition:opacity .5s}
   @keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
   .bell{transform-origin:top center;animation:ring 2.6s ease-in-out infinite}
   @keyframes ring{0%,55%,100%{transform:rotate(0)}62%{transform:rotate(-14deg)}70%{transform:rotate(11deg)}78%{transform:rotate(-7deg)}86%{transform:rotate(4deg)}}
@@ -204,7 +210,7 @@
     100%{transform:translateY(108vh) rotate(340deg)}
   }
   @media (prefers-reduced-motion: reduce){
-    .petal,.overlay-hint{animation:none}
+    .petal,.env-hint{animation:none}
     .env-flap,.letter,#overlay{transition-duration:.01s}
     html{scroll-behavior:auto}
     #musicBtn.playing{animation:none}
@@ -423,10 +429,11 @@
       <div class="env-side right"></div>
       <div class="env-bottom"></div>
       <div class="env-flap"></div>
+      <span class="env-hint">Toca el sello para abrir</span>
       <button class="seal" id="openSeal" aria-label="Abrir invitación"><span class="seal-mono">A&amp;A</span></button>
     </div>
   </div>
-  <p class="overlay-hint">Toca el sello para abrir la carta</p>
+
 </div>
 
 <!-- ======= MÚSICA ======= -->
