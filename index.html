@@ -211,12 +211,12 @@
   .overlay-count{
     position:relative;z-index:2;color:var(--gold-soft);
     font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;
-    font-size:1.35rem;margin-top:26px;text-align:center;
+    font-size:1.35rem;margin-top:8px;text-align:center;
   }
   .overlay-hint{
     position:relative;z-index:2;color:#FFF8EC;
     font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;
-    font-size:1.2rem;margin-top:24px;text-align:center;animation:pulse 2.4s infinite;
+    font-size:1.2rem;margin-top:22px;text-align:center;animation:pulse 2.4s infinite;
   }
   @keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
   .bell{transform-origin:top center;animation:ring 2.6s ease-in-out infinite}
@@ -280,7 +280,7 @@
   .hero-banner{
     display:flex;align-items:center;justify-content:center;gap:14px;
     font-family:'Cormorant Garamond',serif;font-weight:700;font-size:.9rem;
-    letter-spacing:.34em;text-indent:.34em;text-transform:uppercase;
+    letter-spacing:.16em;text-indent:.16em;text-transform:uppercase;
     color:var(--gold);margin-bottom:16px;
     animation:banner 3.8s ease-in-out infinite;
   }
@@ -300,14 +300,17 @@
     font-size:clamp(2.7rem,11vw,4.3rem);line-height:1.15;color:var(--green-dark);
   }
   .hn{display:block}
-  .ch{opacity:0}
-  .ch.on{opacity:1;transition:opacity .22s ease}
-  [data-fade]{opacity:0;transition:opacity .6s ease}
-  [data-fade].on{opacity:1}
-  body.reveal-all .ch,body.reveal-all [data-fade]{opacity:1 !important}
+  .wrt,.letter > *:not(.l-btn){transition:clip-path 1s linear}
+  body.js .wrt,body.js .letter > *:not(.l-btn){clip-path:inset(0 101% 0 -4%)}
+  body.js .wrt.on,body.js .letter > *.on{clip-path:inset(0 -4% 0 -4%)}
+  body.js [data-fade]{opacity:0;transition:opacity .6s ease;clip-path:none !important}
+  body.js [data-fade].on{opacity:1}
+  body.reveal-all .wrt,body.reveal-all .letter > *,body.reveal-all [data-fade]{
+    clip-path:none !important;opacity:1 !important;
+  }
   .nomask{-webkit-mask-image:none !important;mask-image:none !important;opacity:1 !important}
   @media (prefers-reduced-motion: reduce){
-    .ch,[data-fade]{opacity:1 !important;transition:none}
+    .wrt,.letter > *,[data-fade]{clip-path:none !important;opacity:1 !important;transition:none}
     #hero .hero-photo{opacity:1;transform:none}
   }
   @keyframes write{to{clip-path:inset(-15% -3% -15% -3%)}}
@@ -381,13 +384,7 @@
     text-decoration:none;cursor:pointer;transition:background .25s,transform .2s;
     position:relative;overflow:hidden;isolation:isolate;
   }
-  .btn::after{
-    content:"";position:absolute;top:0;bottom:0;left:0;width:42%;
-    background:linear-gradient(100deg,transparent,rgba(230,211,167,.6),transparent);
-    transform:translateX(-180%);pointer-events:none;
-    animation:sweep 3.4s ease-in-out infinite;
-  }
-  @media (prefers-reduced-motion: reduce){.btn::after{animation:none;opacity:0}}
+
   .btn:hover{background:var(--wine-dark);transform:translateY(-1px)}
   .btn.gold{background:var(--wine)}
   .btn.gold:hover{background:var(--wine-dark)}
@@ -857,26 +854,15 @@
 <script>
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // --- Motor de escritura: letra a letra, ritmo constante ---
-  const RITMO = 34, PAUSA = 240;
-  function partir(el){
-    if (!el || el.dataset.split) return el ? [...el.querySelectorAll('.ch')] : [];
-    const t = el.textContent;
-    if (!t.trim()) return [];
-    el.textContent = '';
-    for (const c of t) {
-      const s = document.createElement('span');
-      s.className = 'ch';
-      s.textContent = c === ' ' ? '\u00a0' : c;
-      el.appendChild(s);
-    }
-    el.dataset.split = '1';
-    return [...el.querySelectorAll('.ch')];
-  }
+  // --- Motor de escritura: trazo continuo a velocidad constante ---
+  const VELOCIDAD = 42, PAUSA = 260;   // ms por carácter
   function escribir(el, retardo){
-    const chars = partir(el);
-    chars.forEach((c, i) => setTimeout(() => c.classList.add('on'), retardo + i * RITMO));
-    return chars.length * RITMO;
+    if (!el) return 0;
+    const n = (el.textContent || '').trim().length || 6;
+    const dur = Math.min(2.6, Math.max(0.4, n * VELOCIDAD / 1000));
+    el.style.transitionDuration = dur + 's';
+    setTimeout(() => el.classList.add('on'), retardo);
+    return dur * 1000;
   }
   function secuencia(elems, inicio){
     let t = inicio || 0;
@@ -890,12 +876,15 @@
   const heroSec = document.getElementById('hero');
 
   if (!reduce) {
-    // rótulos y títulos de cada sección se escriben al asomar
-    const objetivos = [...document.querySelectorAll('section:not(#hero) .eyebrow, section:not(#hero) .sec-title')];
-    objetivos.forEach(partir);
+    document.body.classList.add('js');
+    const objetivos = [...document.querySelectorAll('section:not(#hero) .wrt')];
     if ('IntersectionObserver' in window) {
       const wObs = new IntersectionObserver(es => es.forEach(e => {
-        if (e.isIntersecting) { escribir(e.target, 0); wObs.unobserve(e.target); }
+        if (e.isIntersecting) {
+          const el = e.target;
+          escribir(el, el.classList.contains('sec-title') ? 380 : 0);
+          wObs.unobserve(el);
+        }
       }), {threshold: 0.35});
       objetivos.forEach(el => wObs.observe(el));
     } else {
@@ -949,9 +938,9 @@
       const fin = secuencia([
         document.getElementById('guestGreeting'),
         document.querySelector('.hero-banner'),
-        document.querySelector('.hn:nth-child(1) .foil'),
-        document.querySelector('.hn:nth-child(2) .amp'),
-        document.querySelector('.hn:nth-child(3) .foil'),
+        document.querySelector('.hn:nth-child(1)'),
+        document.querySelector('.hn:nth-child(2)'),
+        document.querySelector('.hn:nth-child(3)'),
         document.querySelector('.divider'),
         document.querySelector('.hero-date'),
         document.querySelector('.hero-place')
