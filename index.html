@@ -295,7 +295,8 @@
     0%,100%{transform:translateY(0);opacity:.9}
     50%{transform:translateY(-4px);opacity:1}
   }
-  .orn-cor{transform-box:fill-box;transform-origin:center;animation:corBeat 1.8s ease-in-out infinite}
+  .orn-cor{transform-box:fill-box;transform-origin:center;animation:corSoft 3.4s ease-in-out infinite}
+  @keyframes corSoft{0%,100%{scale:1}50%{scale:1.07}}
   @media (prefers-reduced-motion: reduce){.hero-banner,.divider::after,section:not(#hero)::after,.orn-cor{animation:none}}
   .hero-greeting{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--wine);margin-bottom:16px}
   .hero-names{
@@ -1170,17 +1171,20 @@
       setTimeout(() => h.remove(), 2000);
     }
   }
-  if (!reduce && 'IntersectionObserver' in window) {
-    let anillosT = null;
-    const aObs = new IntersectionObserver(es => es.forEach(e => {
-      if (e.isIntersecting && !anillosT) {
-        soltarCorazones();
-        anillosT = setInterval(soltarCorazones, 4200);
-      } else if (!e.isIntersecting && anillosT) {
-        clearInterval(anillosT); anillosT = null;
-      }
-    }), {threshold: 0.4});
-    aObs.observe(hearts);
+  if (!reduce) {
+    let anillosVisibles = true;
+    if ('IntersectionObserver' in window) {
+      anillosVisibles = false;
+      const aObs = new IntersectionObserver(es => es.forEach(e => {
+        anillosVisibles = e.isIntersecting;
+      }), {threshold: 0.4});
+      aObs.observe(hearts);
+    }
+    // el navegador avisa al completarse cada ciclo: justo cuando los anillos vuelven a chocar
+    const ringL = document.querySelector('.ring-l');
+    if (ringL) ringL.addEventListener('animationiteration', () => {
+      if (anillosVisibles) setTimeout(soltarCorazones, 80);
+    });
   }
 
   hearts.addEventListener('click', () => {
