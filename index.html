@@ -115,7 +115,7 @@
   }
   .env.grow .letter{z-index:8;cursor:pointer}
   @media (prefers-reduced-motion: reduce){.letter > *{opacity:1 !important;animation:none !important}}
-  #overlay.grow .overlay-to,#overlay.grow .overlay-name,#overlay.grow .overlay-count,#overlay.grow .overlay-hint{
+  #overlay.grow .overlay-to,#overlay.grow .overlay-name,#overlay.grow .overlay-hint{
     opacity:0;visibility:hidden;pointer-events:none;transition:opacity .5s,visibility .5s;
   }
   .l-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.58em;line-height:1.35;color:#5C4B3C;max-width:26ch;margin:0}
@@ -208,11 +208,6 @@
   @keyframes floatEnv{0%,100%{translate:0 0}50%{translate:0 -9px}}
   .env.open{animation:none}
   .env.open .env-sheen,.env.open .seal-halo{opacity:0;transition:opacity .4s}
-  .overlay-count{
-    position:relative;z-index:2;color:var(--gold-soft);
-    font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;
-    font-size:1.35rem;margin-top:8px;text-align:center;
-  }
   .overlay-hint{
     position:relative;z-index:2;color:#FFF8EC;
     font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;
@@ -502,7 +497,6 @@
     </div>
   </div>
   <p class="overlay-hint">Toca el sello para abrir</p>
-  <p class="overlay-count" id="envCount"></p>
 </div>
 
 <!-- ======= MÚSICA ======= -->
@@ -929,8 +923,16 @@
   const letter = document.getElementById('letter');
   function closeOverlay(){
     overlay.classList.add('done');
-    setTimeout(() => { overlay.style.display = 'none'; }, 1200); // garantiza que nada bloquee el scroll
-    setTimeout(() => {   // arranca con el sobre ya retirado, para que se vea todo el trazo
+    setTimeout(() => {
+      overlay.style.display = 'none';        // el sobre ya no tapa nada
+      setTimeout(escribirPortada, 260);      // y solo entonces empieza a escribirse la portada
+    }, 1200);
+  }
+  let portadaHecha = false;
+  function escribirPortada(){
+    if (portadaHecha) return;
+    portadaHecha = true;
+    {
       const fin = secuencia([
         document.getElementById('guestGreeting'),
         document.querySelector('.hero-banner'),
@@ -944,7 +946,7 @@
       const foto = document.querySelector('.hero-photo');
       foto.dataset.fade = '1';
       setTimeout(() => foto.classList.add('on'), fin + 200);
-    }, 1450);
+    }
   }
   // red de seguridad: si algo fallara en la animación, la invitación siempre queda accesible
   window.addEventListener('error', closeOverlay);
@@ -984,9 +986,18 @@
           setTimeout(() => { document.getElementById('guestNameEnv').style.display = 'none'; }, 600);
           const boton = letter.querySelector('.l-btn');
           if (!reduce) {
-            // se escribe cuando la tarjeta ya ha terminado de crecer
-            const fin = secuencia([...letter.children].filter(e => e !== boton), 1150);
-            setTimeout(() => boton.classList.add('on'), fin + 350);
+            let arrancada = false;
+            const escribirCarta = () => {
+              if (arrancada) return;
+              arrancada = true;
+              const fin = secuencia([...letter.children].filter(e => e !== boton), 120);
+              setTimeout(() => boton.classList.add('on'), fin + 350);
+            };
+            // en cuanto la tarjeta acaba de crecer, empieza a escribirse
+            letter.addEventListener('transitionend', ev => {
+              if (ev.target === letter && ev.propertyName === 'transform') escribirCarta();
+            });
+            setTimeout(escribirCarta, 1700);   // por si el navegador no avisa
           } else {
             boton.classList.add('on');
           }
@@ -1077,8 +1088,6 @@
     setNum('cd-h', Math.floor(diff%86400000/3600000));
     setNum('cd-m', Math.floor(diff%3600000/60000));
     setNum('cd-s', Math.floor(diff%60000/1000));
-    const ec = document.getElementById('envCount');
-    if (ec) { const dd = Math.floor(diff/86400000); ec.textContent = dd > 0 ? '¡Faltan ' + dd + ' días!' : '¡Es hoy!'; }
   }
   tick(); setInterval(tick, 1000);
 
