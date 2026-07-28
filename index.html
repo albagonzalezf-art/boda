@@ -300,9 +300,9 @@
     font-size:clamp(2.7rem,11vw,4.3rem);line-height:1.15;color:var(--green-dark);
   }
   .hn{display:block}
-  .wrt,.letter > *:not(.l-btn){transition:clip-path 1s linear}
-  body.js .wrt,body.js .letter > *:not(.l-btn){clip-path:inset(0 101% 0 -4%)}
-  body.js .wrt.on,body.js .letter > *.on{clip-path:inset(0 -4% 0 -4%)}
+  #hero .wrt,.letter > *:not(.l-btn){transition:clip-path 1s linear}
+  body.js #hero .wrt,body.js .letter > *:not(.l-btn){clip-path:inset(0 101% 0 -4%)}
+  body.js #hero .wrt.on,body.js .letter > *.on{clip-path:inset(0 -4% 0 -4%)}
   body.js [data-fade]{opacity:0;transition:opacity .6s ease;clip-path:none !important}
   body.js [data-fade].on{opacity:1}
   body.reveal-all .wrt,body.reveal-all .letter > *,body.reveal-all [data-fade]{
@@ -866,9 +866,11 @@
   function escribir(el, retardo){
     if (!el) return 0;
     const n = (el.textContent || '').trim().length || 6;
-    const dur = Math.min(2.6, Math.max(0.4, n * VELOCIDAD / 1000));
+    const dur = Math.min(2.8, Math.max(0.75, n * VELOCIDAD / 1000));
     el.style.transitionDuration = dur + 's';
     setTimeout(() => el.classList.add('on'), retardo);
+    // al terminar su trazo se libera el recorte: garantiza que se vea en cualquier móvil
+    setTimeout(() => { el.style.clipPath = 'none'; }, retardo + dur * 1000 + 120);
     return dur * 1000;
   }
   function secuencia(elems, inicio){
@@ -884,19 +886,6 @@
 
   if (!reduce) {
     document.body.classList.add('js');
-    const objetivos = [...document.querySelectorAll('section:not(#hero) .wrt')];
-    if ('IntersectionObserver' in window) {
-      const wObs = new IntersectionObserver(es => es.forEach(e => {
-        if (e.isIntersecting) {
-          const el = e.target;
-          escribir(el, el.classList.contains('sec-title') ? 1000 : 520);
-          wObs.unobserve(el);
-        }
-      }), {threshold: 0.35});
-      objetivos.forEach(el => wObs.observe(el));
-    } else {
-      objetivos.forEach(el => escribir(el, 0));
-    }
   }
   // red de seguridad: pase lo que pase, todo acaba visible
   setTimeout(() => {
@@ -941,7 +930,7 @@
   function closeOverlay(){
     overlay.classList.add('done');
     setTimeout(() => { overlay.style.display = 'none'; }, 1200); // garantiza que nada bloquee el scroll
-    setTimeout(() => {
+    setTimeout(() => {   // arranca con el sobre ya retirado, para que se vea todo el trazo
       const fin = secuencia([
         document.getElementById('guestGreeting'),
         document.querySelector('.hero-banner'),
@@ -955,7 +944,7 @@
       const foto = document.querySelector('.hero-photo');
       foto.dataset.fade = '1';
       setTimeout(() => foto.classList.add('on'), fin + 200);
-    }, 400);
+    }, 1450);
   }
   // red de seguridad: si algo fallara en la animación, la invitación siempre queda accesible
   window.addEventListener('error', closeOverlay);
@@ -1089,7 +1078,7 @@
     setNum('cd-m', Math.floor(diff%3600000/60000));
     setNum('cd-s', Math.floor(diff%60000/1000));
     const ec = document.getElementById('envCount');
-    if (ec) { const dd = Math.floor(diff/86400000); ec.textContent = dd > 0 ? 'Faltan ' + dd + ' días' : '¡Es hoy!'; }
+    if (ec) { const dd = Math.floor(diff/86400000); ec.textContent = dd > 0 ? '¡Faltan ' + dd + ' días!' : '¡Es hoy!'; }
   }
   tick(); setInterval(tick, 1000);
 
