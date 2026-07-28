@@ -260,11 +260,18 @@
   section:not(#hero)::before{
     content:"";position:absolute;top:28px;left:50%;
     width:min(106px,36%);height:16px;transform:translateX(-50%);opacity:.85;
-    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 22'><g fill='none' stroke='%23C9A96A' stroke-width='1.2' stroke-linecap='round'><path d='M17 11c-5 3-10-1-8-5 2-3 7-2 6 2'/><path d='M17 11C27 5 35 17 52 11'/></g><g transform='translate(140,0) scale(-1,1)'><g fill='none' stroke='%23C9A96A' stroke-width='1.2' stroke-linecap='round'><path d='M17 11c-5 3-10-1-8-5 2-3 7-2 6 2'/><path d='M17 11C27 5 35 17 52 11'/></g></g><path fill='%237A2434' transform='translate(70,11) scale(.5) translate(-12,-12)' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>") no-repeat center/contain;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 22'><g fill='none' stroke='%23C9A96A' stroke-width='1.2' stroke-linecap='round'><path d='M17 11c-5 3-10-1-8-5 2-3 7-2 6 2'/><path d='M17 11C27 5 35 17 52 11'/></g><g transform='translate(140,0) scale(-1,1)'><g fill='none' stroke='%23C9A96A' stroke-width='1.2' stroke-linecap='round'><path d='M17 11c-5 3-10-1-8-5 2-3 7-2 6 2'/><path d='M17 11C27 5 35 17 52 11'/></g></g></svg>") no-repeat center/contain;
+  }
+  section:not(#hero)::after{
+    content:"";position:absolute;top:31.5px;left:50%;width:9px;height:9px;margin-left:-4.5px;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%237A2434' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>") no-repeat center/contain;animation:corBeat 1.8s ease-in-out infinite;
   }
   .eyebrow{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:.76rem;letter-spacing:.3em;padding-left:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
   .sec-title{font-family:'Great Vibes',cursive;font-weight:400;font-size:2.4rem;line-height:1.3;color:var(--wine);letter-spacing:.01em}
-  .divider{width:min(148px,52%);height:23px;margin:18px auto;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 22'><g fill='none' stroke='%23C9A96A' stroke-width='1.2' stroke-linecap='round'><path d='M17 11c-5 3-10-1-8-5 2-3 7-2 6 2'/><path d='M17 11C27 5 35 17 52 11'/></g><g transform='translate(140,0) scale(-1,1)'><g fill='none' stroke='%23C9A96A' stroke-width='1.2' stroke-linecap='round'><path d='M17 11c-5 3-10-1-8-5 2-3 7-2 6 2'/><path d='M17 11C27 5 35 17 52 11'/></g></g><path fill='%237A2434' transform='translate(70,11) scale(.5) translate(-12,-12)' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>") no-repeat center/contain}
+  .divider{width:min(148px,52%);height:23px;margin:18px auto;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 22'><g fill='none' stroke='%23C9A96A' stroke-width='1.2' stroke-linecap='round'><path d='M17 11c-5 3-10-1-8-5 2-3 7-2 6 2'/><path d='M17 11C27 5 35 17 52 11'/></g><g transform='translate(140,0) scale(-1,1)'><g fill='none' stroke='%23C9A96A' stroke-width='1.2' stroke-linecap='round'><path d='M17 11c-5 3-10-1-8-5 2-3 7-2 6 2'/><path d='M17 11C27 5 35 17 52 11'/></g></g></svg>") no-repeat center/contain;position:relative}
+  .divider::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:12px;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%237A2434' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>") no-repeat center/contain;translate:-50% -50%;animation:corBeat 1.8s ease-in-out infinite}
+  @keyframes corBeat{0%,100%{scale:1}12%{scale:1.28}24%{scale:1}36%{scale:1.22}48%{scale:1}}
 
   /* Portada */
   #hero{
@@ -288,7 +295,8 @@
     0%,100%{transform:translateY(0);opacity:.9}
     50%{transform:translateY(-4px);opacity:1}
   }
-  @media (prefers-reduced-motion: reduce){.hero-banner{animation:none}}
+  .orn-cor{transform-box:fill-box;transform-origin:center;animation:corBeat 1.8s ease-in-out infinite}
+  @media (prefers-reduced-motion: reduce){.hero-banner,.divider::after,section:not(#hero)::after,.orn-cor{animation:none}}
   .hero-greeting{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--wine);margin-bottom:16px}
   .hero-names{
     font-family:'Great Vibes',cursive;font-weight:400;
@@ -428,7 +436,13 @@
   .bus-t{font-family:'Cormorant Garamond',serif;font-size:1.25rem;margin:8px 0 4px;color:var(--green-dark)}
   .bus-d{font-size:.88rem;color:#6E5B48}
 
-  #hearts{animation:beat 1.9s ease-in-out infinite;transform-origin:center}
+  .ring-l{animation:ringL 4.2s ease-in-out infinite}
+  .ring-r{animation:ringR 4.2s ease-in-out infinite}
+  .ring-lock{animation:ringLock 4.2s ease-in-out infinite}
+  @keyframes ringL{0%,18%,92%,100%{transform:translateX(0)}50%{transform:translateX(-10px)}}
+  @keyframes ringR{0%,18%,92%,100%{transform:translateX(0)}50%{transform:translateX(10px)}}
+  @keyframes ringLock{0%,18%,92%,100%{opacity:1}30%,80%{opacity:0}}
+  @media (prefers-reduced-motion: reduce){.ring-l,.ring-r,.ring-lock{animation:none}}
   @keyframes beat{0%,100%{transform:scale(1)}14%{transform:scale(1.12)}28%{transform:scale(1)}42%{transform:scale(1.08)}56%{transform:scale(1)}}
   .mini-heart{position:absolute;font-size:1.1rem;pointer-events:none;animation:floatUp 1.7s ease-out forwards}
   @keyframes floatUp{0%{opacity:1;transform:translateY(0) scale(.7)}100%{opacity:0;transform:translateY(-90px) scale(1.4)}}
@@ -481,7 +495,7 @@
         <span class="l-names">Adrián</span>
         <span class="l-amp">&amp;</span>
         <span class="l-names">Alba</span>
-        <span class="l-orn" data-fade="1" style="width:42%;max-width:106px"><svg aria-hidden="true" style="display:block;width:100%;height:auto" viewBox='0 0 140 22'><g fill='none' stroke='#C9A96A' stroke-width='1.2' stroke-linecap='round'><path d='M17 11c-5 3-10-1-8-5 2-3 7-2 6 2'/><path d='M17 11C27 5 35 17 52 11'/></g><g transform='translate(140,0) scale(-1,1)'><g fill='none' stroke='#C9A96A' stroke-width='1.2' stroke-linecap='round'><path d='M17 11c-5 3-10-1-8-5 2-3 7-2 6 2'/><path d='M17 11C27 5 35 17 52 11'/></g></g><path fill='#7A2434' transform='translate(70,11) scale(.5) translate(-12,-12)' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg></span>
+        <span class="l-orn" data-fade="1" style="width:42%;max-width:106px"><svg aria-hidden='true' style='display:block;width:100%;height:auto' viewBox='0 0 140 22'><g fill='none' stroke='#C9A96A' stroke-width='1.2' stroke-linecap='round'><path d='M17 11c-5 3-10-1-8-5 2-3 7-2 6 2'/><path d='M17 11C27 5 35 17 52 11'/></g><g transform='translate(140,0) scale(-1,1)'><g fill='none' stroke='#C9A96A' stroke-width='1.2' stroke-linecap='round'><path d='M17 11c-5 3-10-1-8-5 2-3 7-2 6 2'/><path d='M17 11C27 5 35 17 52 11'/></g></g><path class='orn-cor' fill='#7A2434' transform='translate(70,11) scale(.5) translate(-12,-12)' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg></span>
         <p class="l-text">Tenemos el honor de invitarte a celebrar nuestra boda</p>
         <button class="l-btn" id="enterBtn">Descubrir la invitación</button>
       </div>
@@ -834,17 +848,18 @@
     </defs>
     <ellipse cx="36" cy="70" rx="20" ry="3" fill="rgba(64,49,52,.12)"/>
     <ellipse cx="60" cy="70" rx="20" ry="3" fill="rgba(64,49,52,.12)"/>
-    <g id="bandOne">
+    <g class="ring-l"><g id="bandOne">
       <path fill-rule="evenodd" fill="url(#bandB)" stroke="rgba(110,84,26,.5)" stroke-width=".7"
         d="M17,38 a17,18 0 1,0 34,0 a17,18 0 1,0 -34,0 Z M22.6,38 a11.4,12.4 0 1,0 22.8,0 a11.4,12.4 0 1,0 -22.8,0 Z"/>
       <path d="M23.5,29 a15.5,16.5 0 0,1 8.5,-8.4" fill="none" stroke="rgba(255,250,235,.6)" stroke-width="1.7" stroke-linecap="round"/>
     </g>
-    <g>
+    <g class="ring-r">
       <path fill-rule="evenodd" fill="url(#bandG)" stroke="rgba(110,84,26,.5)" stroke-width=".7"
         d="M43,36 a17,18 0 1,0 34,0 a17,18 0 1,0 -34,0 Z M48.6,36 a11.4,12.4 0 1,0 22.8,0 a11.4,12.4 0 1,0 -22.8,0 Z"/>
       <path d="M49.5,27 a15.5,16.5 0 0,1 8.5,-8.4" fill="none" stroke="rgba(255,250,235,.7)" stroke-width="1.7" stroke-linecap="round"/>
     </g>
-    <use href="#bandOne" clip-path="url(#over)"/>
+    </g>
+    <use class="ring-lock" href="#bandOne" clip-path="url(#over)"/>
   </svg>
   <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;display:block">Con todo nuestro cariño,</span>
   <span style="font-family:'Great Vibes',cursive;font-style:normal;font-size:2.1rem;line-height:1.4;display:block;color:var(--wine)">Adrián <span class="amp" style="font-size:.62em">&amp;</span> Alba</span>
@@ -1142,6 +1157,32 @@
   // --- Corazones interactivos del cierre ---
   const hearts = document.getElementById('hearts');
   const footerEl = document.querySelector('footer');
+  // al juntarse las alianzas, sueltan dos corazones
+  function soltarCorazones(){
+    for (let i = 0; i < 2; i++) {
+      const h = document.createElement('span');
+      h.className = 'mini-heart';
+      h.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15"><path fill="' + (i ? '#C9A96A' : '#7A2434') + '" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
+      const r = hearts.getBoundingClientRect(), f = footerEl.getBoundingClientRect();
+      h.style.left = (r.left - f.left + r.width/2 - 8 + (i ? 10 : -10)) + 'px';
+      h.style.top  = (r.top - f.top + 10) + 'px';
+      footerEl.appendChild(h);
+      setTimeout(() => h.remove(), 2000);
+    }
+  }
+  if (!reduce && 'IntersectionObserver' in window) {
+    let anillosT = null;
+    const aObs = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting && !anillosT) {
+        soltarCorazones();
+        anillosT = setInterval(soltarCorazones, 4200);
+      } else if (!e.isIntersecting && anillosT) {
+        clearInterval(anillosT); anillosT = null;
+      }
+    }), {threshold: 0.4});
+    aObs.observe(hearts);
+  }
+
   hearts.addEventListener('click', () => {
     for (let i = 0; i < 7; i++) {
       const h = document.createElement('span');
