@@ -96,20 +96,12 @@
   /* fase final: la carta crece y el sobre se desvanece debajo */
   .l-btn{
     position:relative;overflow:hidden;isolation:isolate;align-self:center;
-    margin:.7em auto 0;background:var(--wine);color:#FBF9F3;border:none;border-radius:2em;
+    margin:.7em auto 0;background:var(--wine);color:var(--ivory);border:none;border-radius:2em;
     padding:.28em 1.3em;font-family:'Great Vibes',cursive;font-weight:400;font-size:.85em;letter-spacing:.02em;
     text-align:center;cursor:pointer;border:1px solid rgba(230,211,167,.55);
     opacity:0;pointer-events:none;transition:opacity .7s ease,background .25s;
     box-shadow:0 3px 10px rgba(94,27,41,.25);
   }
-  .l-btn::after{
-    content:"";position:absolute;top:0;bottom:0;left:0;width:42%;
-    background:linear-gradient(100deg,transparent,rgba(230,211,167,.65),transparent);
-    transform:translateX(-180%);pointer-events:none;
-    animation:sweep 7s ease-in-out infinite;
-  }
-  @keyframes sweep{0%{transform:translateX(-180%)}55%,100%{transform:translateX(330%)}}
-  @media (prefers-reduced-motion: reduce){.l-btn::after{animation:none;opacity:0}}
   .l-btn:hover{background:var(--wine-dark)}
   .l-btn.on{opacity:1;pointer-events:auto}
   .env.grow .env-back,.env.grow .env-side,.env.grow .env-bottom,.env.grow .env-flap{
@@ -394,16 +386,9 @@
     text-decoration:none;cursor:pointer;transition:background .25s,transform .2s;
     position:relative;overflow:hidden;isolation:isolate;
   }
-  .btn::after{
-    content:"";position:absolute;top:0;bottom:0;left:0;width:42%;
-    background:linear-gradient(100deg,transparent,rgba(230,211,167,.65),transparent);
-    transform:translateX(-180%);pointer-events:none;
-    animation:sweep 7s ease-in-out infinite;
-  }
-  @media (prefers-reduced-motion: reduce){.btn::after{animation:none;opacity:0}}
 
   .btn:hover{background:var(--wine-dark);transform:translateY(-1px)}
-  .btn.gold{background:var(--wine)}
+  .btn.gold{background:var(--wine);color:var(--ivory)}
   .btn.gold:hover{background:var(--wine-dark)}
 
   /* Galería: carrusel deslizable */
@@ -832,7 +817,7 @@
     <p class="eyebrow wrt">Confirma tu asistencia</p>
     <h2 class="sec-title wrt" style="--d:.45s">¿Contamos contigo?</h2>
     <p style="margin:18px 0 28px">Por favor, confírmanos antes del <strong>1 de junio de 2027</strong> — vuestra respuesta con tiempo nos ayuda muchísimo con la logística.</p>
-    <a class="btn" style="background:var(--wine);color:#FBF7F0" href="#" id="rsvpBtn">Confirmar asistencia</a>
+    <a class="btn" href="#" id="rsvpBtn">Confirmar asistencia</a>
   </div>
 </section>
 
