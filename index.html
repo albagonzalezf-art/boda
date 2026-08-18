@@ -96,13 +96,13 @@
   /* fase final: la carta crece y el sobre se desvanece debajo */
   .l-btn{
     position:relative;overflow:hidden;isolation:isolate;align-self:center;
-    margin:.7em auto 0;background:var(--wine);color:var(--ivory);border:none;border-radius:2em;
+    margin:.7em auto 0;background:linear-gradient(104deg,transparent 28%,rgba(230,211,167,.22) 44%,rgba(255,247,226,.42) 50%,rgba(230,211,167,.22) 56%,transparent 72%),var(--wine);color:var(--ivory);border:1px solid rgba(230,211,167,.55);border-radius:2em;
     padding:.28em 1.3em;font-family:'Great Vibes',cursive;font-weight:400;font-size:.85em;letter-spacing:.02em;
     text-align:center;cursor:pointer;border:1px solid rgba(230,211,167,.55);
     opacity:0;pointer-events:none;transition:opacity .7s ease,background .25s;
-    box-shadow:0 3px 10px rgba(94,27,41,.25);
+    box-shadow:0 3px 10px rgba(94,27,41,.25), inset 0 1px 0 rgba(255,244,220,.3);
   }
-  .l-btn:hover{background:var(--wine-dark)}
+  .l-btn:hover{filter:brightness(1.07)}
   .l-btn.on{opacity:1;pointer-events:auto}
   .env.grow .env-back,.env.grow .env-side,.env.grow .env-bottom,.env.grow .env-flap{
     opacity:0;pointer-events:none;transition:opacity .7s ease .2s;
@@ -380,16 +380,16 @@
   .card-name{font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:var(--green-dark)}
   .card-sub{font-size:.9rem;color:#6E5B48;margin:6px 0 18px}
   .btn{
-    display:inline-block;background:var(--wine);color:var(--ivory);
+    display:inline-block;background:linear-gradient(104deg,transparent 28%,rgba(230,211,167,.22) 44%,rgba(255,247,226,.42) 50%,rgba(230,211,167,.22) 56%,transparent 72%),var(--wine);color:var(--ivory);
     border:1px solid rgba(230,211,167,.55);border-radius:30px;padding:6px 28px;
     font-family:'Great Vibes',cursive;font-weight:400;font-size:1.28rem;letter-spacing:.02em;text-align:center;
     text-decoration:none;cursor:pointer;transition:background .25s,transform .2s;
     position:relative;overflow:hidden;isolation:isolate;
   }
 
-  .btn:hover{background:var(--wine-dark);transform:translateY(-1px)}
-  .btn.gold{background:var(--wine);color:var(--ivory)}
-  .btn.gold:hover{background:var(--wine-dark)}
+  .btn:hover{filter:brightness(1.07);transform:translateY(-1px)}
+  .btn.gold{background:linear-gradient(104deg,transparent 28%,rgba(230,211,167,.22) 44%,rgba(255,247,226,.42) 50%,rgba(230,211,167,.22) 56%,transparent 72%),var(--wine);color:var(--ivory)}
+  .btn.gold:hover{filter:brightness(1.07)}
 
   /* Galería: carrusel deslizable */
   .carousel{
