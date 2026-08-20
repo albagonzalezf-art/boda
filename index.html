@@ -56,19 +56,31 @@
   }
   .silk-video.on{opacity:.62}
   .silk{
-    position:absolute;inset:-25%;z-index:0;pointer-events:none;opacity:.6;
+    position:absolute;inset:-30%;z-index:0;pointer-events:none;opacity:.95;
     background:
-      radial-gradient(58% 42% at 22% 28%, rgba(206,104,122,.55), transparent 62%),
-      radial-gradient(52% 46% at 82% 18%, rgba(66,16,28,.65), transparent 62%),
-      radial-gradient(56% 50% at 62% 82%, rgba(170,74,94,.5), transparent 62%),
-      radial-gradient(45% 40% at 12% 78%, rgba(92,26,42,.55), transparent 62%);
-    filter:blur(46px);
-    animation:silkDrift 38s ease-in-out infinite alternate;
+      radial-gradient(50% 38% at 20% 26%, rgba(224,132,150,.75), transparent 64%),
+      radial-gradient(44% 40% at 84% 16%, rgba(48,8,18,.85), transparent 64%),
+      radial-gradient(48% 44% at 64% 84%, rgba(196,88,110,.7), transparent 64%),
+      radial-gradient(40% 36% at 10% 80%, rgba(58,12,22,.8), transparent 64%);
+    filter:blur(38px);
+    animation:silkDrift 26s ease-in-out infinite alternate;
+  }
+  .silk2{
+    position:absolute;inset:-30%;z-index:0;pointer-events:none;opacity:.6;
+    background:
+      radial-gradient(46% 36% at 74% 40%, rgba(236,158,172,.6), transparent 64%),
+      radial-gradient(42% 38% at 26% 66%, rgba(40,6,14,.7), transparent 64%);
+    filter:blur(44px);
+    animation:silkDrift2 34s ease-in-out infinite alternate;
   }
   .silk::after{
     content:"";position:absolute;inset:0;
-    background:repeating-linear-gradient(101deg,rgba(255,236,222,.045) 0 2px,transparent 2px 17px);
-    animation:silkFolds 30s linear infinite;
+    background:repeating-linear-gradient(101deg,rgba(255,240,228,.11) 0 2px,transparent 2px 15px);
+    animation:silkFolds 22s linear infinite;
+  }
+  @keyframes silkDrift2{
+    0%{transform:translate3d(2%,-2%,0) scale(1.05)}
+    100%{transform:translate3d(-3%,3%,0) scale(1.12)}
   }
   @keyframes silkDrift{
     0%{transform:translate3d(0,0,0) scale(1)}
@@ -76,7 +88,7 @@
     100%{transform:translate3d(3%,-2%,0) scale(1.04)}
   }
   @keyframes silkFolds{to{transform:translateX(17px)}}
-  @media (prefers-reduced-motion: reduce){.silk,.silk::after{animation:none}}
+  @media (prefers-reduced-motion: reduce){.silk,.silk2,.silk::after{animation:none}}
   .env-scene{perspective:1400px;position:relative;z-index:2}
   .env{
     position:relative;width:min(92vw,430px);aspect-ratio:10/7.4;
@@ -529,6 +541,7 @@
     <source src="seda.mp4" type="video/mp4">
   </video>
   <span class="silk" aria-hidden="true"></span>
+  <span class="silk2" aria-hidden="true"></span>
   <p class="overlay-to">Para</p>
   <p class="overlay-name" id="guestNameEnv">nuestro invitado más especial</p>
   <div class="env-scene">
