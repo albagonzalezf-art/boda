@@ -96,11 +96,11 @@
   /* fase final: la carta crece y el sobre se desvanece debajo */
   .l-btn{
     position:relative;overflow:hidden;isolation:isolate;align-self:center;
-    margin:.7em auto 0;background:linear-gradient(104deg,transparent 28%,rgba(230,211,167,.22) 44%,rgba(255,247,226,.42) 50%,rgba(230,211,167,.22) 56%,transparent 72%),var(--wine);color:var(--ivory);border:1px solid rgba(230,211,167,.55);border-radius:2em;
+    margin:.7em auto 0;background:var(--wine);color:var(--ivory);border:1px solid rgba(230,211,167,.55);border-radius:2em;
     padding:.28em 1.3em;font-family:'Great Vibes',cursive;font-weight:400;font-size:.85em;letter-spacing:.02em;
     text-align:center;cursor:pointer;border:1px solid rgba(230,211,167,.55);
     opacity:0;pointer-events:none;transition:opacity .7s ease,background .25s;
-    box-shadow:0 3px 10px rgba(94,27,41,.25), inset 0 1px 0 rgba(255,244,220,.3);
+    box-shadow:0 3px 10px rgba(94,27,41,.25);
   }
   .l-btn:hover{filter:brightness(1.07)}
   .l-btn.on{opacity:1;pointer-events:auto}
@@ -380,7 +380,7 @@
   .card-name{font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:var(--green-dark)}
   .card-sub{font-size:.9rem;color:#6E5B48;margin:6px 0 18px}
   .btn{
-    display:inline-block;background:linear-gradient(104deg,transparent 28%,rgba(230,211,167,.22) 44%,rgba(255,247,226,.42) 50%,rgba(230,211,167,.22) 56%,transparent 72%),var(--wine);color:var(--ivory);
+    display:inline-block;background:var(--wine);color:var(--ivory);
     border:1px solid rgba(230,211,167,.55);border-radius:30px;padding:6px 28px;
     font-family:'Great Vibes',cursive;font-weight:400;font-size:1.28rem;letter-spacing:.02em;text-align:center;
     text-decoration:none;cursor:pointer;transition:background .25s,transform .2s;
@@ -388,15 +388,15 @@
   }
 
   .btn::after,.l-btn::after{
-    content:"";position:absolute;top:0;bottom:0;left:0;width:46%;
-    background:linear-gradient(100deg,transparent,rgba(233,214,170,.45),rgba(255,249,231,.7),rgba(233,214,170,.45),transparent);
-    transform:translateX(-210%);pointer-events:none;
-    animation:sweep 5s ease-in-out infinite;
+    content:"";position:absolute;top:0;bottom:0;left:0;width:40%;
+    background:linear-gradient(100deg,transparent 0%,rgba(226,206,158,.22) 28%,rgba(240,226,186,.42) 50%,rgba(226,206,158,.22) 72%,transparent 100%);
+    transform:translateX(-260%);pointer-events:none;
+    animation:sweep 6.5s linear infinite;
   }
-  @keyframes sweep{0%{transform:translateX(-210%)}62%,100%{transform:translateX(330%)}}
+  @keyframes sweep{from{transform:translateX(-260%)}to{transform:translateX(360%)}}
   @media (prefers-reduced-motion: reduce){.btn::after,.l-btn::after{animation:none;opacity:0}}
   .btn:hover{filter:brightness(1.07);transform:translateY(-1px)}
-  .btn.gold{background:linear-gradient(104deg,transparent 28%,rgba(230,211,167,.22) 44%,rgba(255,247,226,.42) 50%,rgba(230,211,167,.22) 56%,transparent 72%),var(--wine);color:var(--ivory)}
+  .btn.gold{background:var(--wine);color:var(--ivory)}
   .btn.gold:hover{filter:brightness(1.07)}
 
   /* Galería: carrusel deslizable */
