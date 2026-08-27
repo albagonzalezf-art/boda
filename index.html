@@ -497,14 +497,17 @@
   @media (prefers-reduced-motion: reduce){
     .ico-bus,.ico-moon,.dc-dress,.dc-suit{animation:none}
   }
-  /* ramos superiores centrados, cayendo hacia abajo — bajo el separador */
-  .flor-abajo{padding-top:176px}
-  .flor-abajo::before{top:18px}
+  /* ramos arriba del todo; el separador queda en el hueco de la sección anterior */
+  .flor-abajo{overflow:visible;padding-top:134px}
+  .flor-abajo::before{top:-52px}
   .flor-abajo::after{
-    top:58px;left:50%;transform:translateX(-50%) scaleY(-1);
+    top:4px;left:50%;transform:translateX(-50%) scaleY(-1);
     width:min(250px,60%);aspect-ratio:430/179;background-image:var(--rosa-inf);
   }
-  @media (max-width:480px){.flor-abajo{padding-top:158px}.flor-abajo::after{top:52px}}
+  @media (max-width:480px){
+    .flor-abajo{padding-top:118px}
+    .flor-abajo::before{top:-46px}
+  }
   /* esquinas: superior derecha + inferior izquierda */
   .flor-esq::after{
     bottom:-12px;left:-20px;width:min(146px,32%);aspect-ratio:330/337;
