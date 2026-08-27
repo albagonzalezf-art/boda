@@ -268,7 +268,13 @@
     background-repeat:no-repeat;background-size:contain;
   }
   /* portada: ramo centrado arriba, cayendo */
-  #hero{position:relative;overflow:hidden}
+  #hero{
+    position:relative;overflow:hidden;padding-bottom:118px;
+    background-image:var(--rosa-inf);
+    background-repeat:no-repeat;
+    background-position:center bottom -2px;
+    background-size:min(250px,60%) auto;
+  }
   #hero > *{position:relative;z-index:1}
   #hero::after{
     content:"";position:absolute;top:-6px;left:50%;transform:translateX(-50%) scaleY(-1);
@@ -497,16 +503,21 @@
   @media (prefers-reduced-motion: reduce){
     .ico-bus,.ico-moon,.dc-dress,.dc-suit{animation:none}
   }
-  /* ramos arriba del todo; el separador queda en el hueco de la sección anterior */
-  .flor-abajo{overflow:visible;padding-top:134px}
-  .flor-abajo::before{top:-52px !important}
+  /* prueba: ramo arriba cayendo y ramo abajo cerrando, sin separador */
+  .flor-abajo{
+    overflow:visible;padding-top:118px;padding-bottom:132px;
+    background-image:var(--rosa-inf);
+    background-repeat:no-repeat;
+    background-position:center bottom -2px;
+    background-size:min(250px,60%) auto;
+  }
+  .flor-abajo::before{display:none !important}
   .flor-abajo::after{
     top:4px;left:50%;transform:translateX(-50%) scaleY(-1);
     width:min(250px,60%);aspect-ratio:430/173;background-image:var(--rosa-inf);
   }
   @media (max-width:480px){
-    .flor-abajo{padding-top:118px}
-    .flor-abajo::before{top:-46px !important}
+    .flor-abajo{padding-top:104px;padding-bottom:116px}
   }
   /* esquinas: superior derecha + inferior izquierda */
   .flor-esq::after{
