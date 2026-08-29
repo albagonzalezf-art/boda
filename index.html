@@ -50,6 +50,12 @@
     transition:opacity 1.1s ease .2s,visibility 1.1s .2s;
   }
   #overlay.done{opacity:0;visibility:hidden}
+  .mono-sobre{
+    position:relative;z-index:2;display:block;
+    width:min(132px,34%);height:auto;margin:0 auto 14px;
+    filter:drop-shadow(0 6px 16px rgba(20,2,8,.45));
+  }
+  #overlay.grow .mono-sobre{opacity:0;transition:opacity .5s}
   .overlay-to{position:relative;z-index:2;font-family:'Great Vibes',cursive;color:var(--gold-soft);font-size:1.5rem;margin-bottom:2px}
   .overlay-name{position:relative;z-index:2;color:#FFF8EC;font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;font-size:2.15rem;line-height:1.2;margin-bottom:32px;text-align:center;max-width:15ch;text-shadow:0 2px 14px rgba(40,6,14,.55)}
   .env-scene{perspective:1400px;position:relative;z-index:2}
@@ -556,7 +562,7 @@
   }
   footer > *{position:relative;z-index:1}
   .monograma{
-    display:block;width:min(190px,52%);height:auto;margin:0 auto 22px;
+    display:block;width:min(200px,54%);height:auto;margin:30px auto 0;
     filter:none;
   }
   .frase{
@@ -575,6 +581,7 @@
 
 <!-- ======= SOBRE ======= -->
 <div id="overlay">
+  <img class="mono-sobre" src="f/monograma.png" alt="Monograma de Adrián y Alba">
   <p class="overlay-to">Para</p>
   <p class="overlay-name" id="guestNameEnv">nuestro invitado más especial</p>
   <div class="env-scene">
@@ -957,40 +964,11 @@
 <div id="lightbox" role="dialog" aria-label="Foto ampliada"><img id="lightboxImg" src="" alt="Foto ampliada"></div>
 
 <footer>
-  <svg id="hearts" viewBox="0 0 96 76" width="104" style="display:block;margin:0 auto 16px;cursor:pointer" role="button" aria-label="Nuestras alianzas">
-    <defs>
-      <linearGradient id="bandB" x1="10%" y1="0%" x2="90%" y2="100%">
-        <stop offset="0%" stop-color="#7E611F"/><stop offset="28%" stop-color="#EFDFB4"/>
-        <stop offset="55%" stop-color="#BE9C55"/><stop offset="80%" stop-color="#E3CE9B"/>
-        <stop offset="100%" stop-color="#6E5318"/>
-      </linearGradient>
-      <linearGradient id="bandG" x1="10%" y1="0%" x2="90%" y2="100%">
-        <stop offset="0%" stop-color="#8C6C2E"/><stop offset="28%" stop-color="#F6E9C7"/>
-        <stop offset="55%" stop-color="#C9A96A"/><stop offset="80%" stop-color="#EBD9A8"/>
-        <stop offset="100%" stop-color="#7E611F"/>
-      </linearGradient>
-      <clipPath id="over"><rect x="43" y="6" width="10" height="30"/></clipPath>
-    </defs>
-    <ellipse cx="36" cy="70" rx="20" ry="3" fill="rgba(64,49,52,.12)"/>
-    <ellipse cx="60" cy="70" rx="20" ry="3" fill="rgba(64,49,52,.12)"/>
-    <g class="ring-l"><g id="bandOne">
-      <path fill-rule="evenodd" fill="url(#bandB)" stroke="rgba(110,84,26,.5)" stroke-width=".7"
-        d="M17,38 a17,18 0 1,0 34,0 a17,18 0 1,0 -34,0 Z M22.6,38 a11.4,12.4 0 1,0 22.8,0 a11.4,12.4 0 1,0 -22.8,0 Z"/>
-      <path d="M23.5,29 a15.5,16.5 0 0,1 8.5,-8.4" fill="none" stroke="rgba(255,250,235,.6)" stroke-width="1.7" stroke-linecap="round"/>
-    </g>
-    <g class="ring-r">
-      <path fill-rule="evenodd" fill="url(#bandG)" stroke="rgba(110,84,26,.5)" stroke-width=".7"
-        d="M43,36 a17,18 0 1,0 34,0 a17,18 0 1,0 -34,0 Z M48.6,36 a11.4,12.4 0 1,0 22.8,0 a11.4,12.4 0 1,0 -22.8,0 Z"/>
-      <path d="M49.5,27 a15.5,16.5 0 0,1 8.5,-8.4" fill="none" stroke="rgba(255,250,235,.7)" stroke-width="1.7" stroke-linecap="round"/>
-    </g>
-    </g>
-    <use class="ring-lock" href="#bandOne" clip-path="url(#over)"/>
-  </svg>
-  <img class="monograma" src="f/monograma.png" alt="Monograma de Adrián y Alba" loading="lazy">
   <p class="frase">Una boda se vive tres veces:<br>al soñarla, al celebrarla y al recordarla.</p>
   <p class="gracias">Gracias por acompañarnos</p>
-  <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;display:block;margin-top:26px">Con todo nuestro cariño,</span>
+  <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;display:block;margin-top:24px">Con todo nuestro cariño,</span>
   <span style="font-family:'Great Vibes',cursive;font-style:normal;font-size:2.1rem;line-height:1.4;display:block;color:var(--wine)">Adrián <span class="amp" style="font-size:.62em">&amp;</span> Alba</span>
+  <img class="monograma" src="f/monograma.png" alt="Monograma de Adrián y Alba" loading="lazy">
 </footer>
 
 <script>
@@ -1284,6 +1262,7 @@
 
   // --- Corazones interactivos del cierre ---
   const hearts = document.getElementById('hearts');
+  if (hearts) {
   const footerEl = document.querySelector('footer');
   // al juntarse las alianzas, sueltan dos corazones
   function soltarCorazones(){
@@ -1328,6 +1307,7 @@
       setTimeout(() => h.remove(), 2200);
     }
   });
+  }
 </script>
 </body>
 </html>
