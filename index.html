@@ -555,6 +555,19 @@
     pointer-events:none;z-index:0;
   }
   footer > *{position:relative;z-index:1}
+  .monograma{
+    display:block;width:min(190px,52%);height:auto;margin:0 auto 22px;
+    filter:none;
+  }
+  .frase{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:1.16rem;line-height:1.65;color:var(--wine);
+    max-width:26ch;margin:0 auto;
+  }
+  .gracias{
+    font-family:'Great Vibes',cursive;font-size:1.7rem;color:var(--gold-d,#B08A3E);
+    margin-top:12px;line-height:1.3;
+  }
   footer{overflow:hidden;position:relative;padding:60px 24px 96px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--green)}
 </style>
 </head>
@@ -973,7 +986,10 @@
     </g>
     <use class="ring-lock" href="#bandOne" clip-path="url(#over)"/>
   </svg>
-  <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;display:block">Con todo nuestro cariño,</span>
+  <img class="monograma" src="f/monograma.png" alt="Monograma de Adrián y Alba" loading="lazy">
+  <p class="frase">Una boda se vive tres veces:<br>al soñarla, al celebrarla y al recordarla.</p>
+  <p class="gracias">Gracias por acompañarnos</p>
+  <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;display:block;margin-top:26px">Con todo nuestro cariño,</span>
   <span style="font-family:'Great Vibes',cursive;font-style:normal;font-size:2.1rem;line-height:1.4;display:block;color:var(--wine)">Adrián <span class="amp" style="font-size:.62em">&amp;</span> Alba</span>
 </footer>
 
