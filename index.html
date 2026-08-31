@@ -1019,13 +1019,13 @@
     }
   }
   // red de seguridad: si algo fallara en la animación, la invitación siempre queda accesible
-  window.addEventListener('error', closeOverlay);
+  window.addEventListener('error', () => setTimeout(closeOverlay, 6000));
   // 4) el botón (o cualquier toque en la carta ya abierta) abre la parte interactiva
-  entrar.addEventListener('click', closeOverlay);
   let opened = false;
   const vid = document.getElementById('sobreVid');
   const hint = document.getElementById('sobreHint');
   const entrar = document.getElementById('enterBtn');
+  entrar.addEventListener('click', closeOverlay);
   function mostrarBoton(){ entrar.classList.add('on'); }
 
   document.getElementById('openSeal').addEventListener('click', () => {
