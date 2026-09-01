@@ -458,9 +458,10 @@
     padding:42px 30px;margin-top:34px;
   }
   .lugar-img{
-    display:block;width:100%;height:auto;aspect-ratio:1100/820;object-fit:cover;
-    border-radius:6px;margin:0 auto 20px;
+    display:block;width:100%;height:auto;aspect-ratio:1100/820;object-fit:contain;
+    margin:0 auto 16px;
   }
+  .card.lugar{background:transparent;border:none;box-shadow:none;padding:8px 10px 30px}
   .card-name{font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:var(--green-dark)}
   .card-sub{font-size:.9rem;color:#6E5B48;margin:6px 0 18px}
   .btn{
@@ -475,8 +476,8 @@
   .btn:hover,.btn:active{background:var(--wine);color:var(--ivory);box-shadow:inset 0 0 0 1px rgba(230,211,167,.4)}
   .dark .btn{color:#FBF3E4;border-color:rgba(230,211,167,.65);box-shadow:inset 0 0 0 1px rgba(230,211,167,.18)}
   .dark .btn:hover,.dark .btn:active{background:rgba(251,243,228,.16);color:#FFF8EC}
-  .btn.gold{background:var(--wine);color:var(--ivory);border-color:var(--wine);box-shadow:inset 0 0 0 1px rgba(230,211,167,.42)}
-  .btn.gold:hover{background:var(--wine-dark)}
+
+
 
   /* Galería: carrusel deslizable */
   .carousel{
@@ -802,13 +803,13 @@
   <p class="eyebrow wrt">Cómo llegar</p>
   <h2 class="sec-title wrt" style="--d:.45s">Ubicaciones</h2>
   <div class="card lugar">
-    <img class="lugar-img" src="f/catedral.jpg" alt="Ceremonia" loading="lazy">
+    <img class="lugar-img" src="f/catedral.png" alt="Ceremonia" loading="lazy">
     <p class="card-name">Ceremonia</p>
     <p class="card-sub">Catedral de Lugo · 16:30 h</p>
     <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Catedral+de+Lugo" target="_blank" rel="noopener">Ver en el mapa</a>
   </div>
   <div class="card lugar">
-    <img class="lugar-img" src="f/pazo.jpg" alt="Celebración" loading="lazy">
+    <img class="lugar-img" src="f/pazo.png" alt="Celebración" loading="lazy">
     <p class="card-name">Celebración</p>
     <p class="card-sub">Pazo de Treilán · al finalizar la ceremonia</p>
     <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Pazo+de+Treil%C3%A1n" target="_blank" rel="noopener">Ver en el mapa</a>
@@ -862,7 +863,7 @@
         </svg></div>
     <p style="display:inline-block;background:var(--rose);color:#571623;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;border-radius:20px;padding:6px 16px;margin:12px 0 14px;animation:pulse 2.4s infinite">¡Reserva con tiempo!</p>
     <p style="margin-bottom:14px">Os recomendamos buscar alojamiento en el <strong>centro de Lugo</strong> lo antes posible: al estar en pleno Camino de Santiago, las plazas suelen agotarse con mucha antelación.</p>
-    <a class="btn gold" href="https://www.google.com/maps/search/?api=1&query=hoteles+centro+de+Lugo" target="_blank" rel="noopener">Ver hoteles en el centro</a>
+    <a class="btn" href="https://www.google.com/maps/search/?api=1&query=hoteles+centro+de+Lugo" target="_blank" rel="noopener">Ver hoteles en el centro</a>
   </div>
 </section>
 
@@ -1086,26 +1087,30 @@
         try {
           env.classList.add('grow');
           overlay.classList.add('grow');
+          const boton = letter.querySelector('.l-btn');
+          let arrancada = false;
+          const escribirCarta = () => {
+            if (arrancada) return;
+            arrancada = true;
+            const fin = secuencia([...letter.children].filter(e => e !== boton), 140);
+            setTimeout(() => boton.classList.add('on'), fin + 380);
+          };
           const s = Math.min(0.92 * innerWidth / letter.offsetWidth,
                              0.88 * innerHeight / letter.offsetHeight, 3.4);
-          letter.style.transition = 'transform 1s cubic-bezier(.2,.85,.25,1), box-shadow 1s';
-          letter.style.transform = 'translate(-50%,-50%) scale(' + s.toFixed(3) + ')';
-          const boton = letter.querySelector('.l-btn');
-          if (!reduce) {
-            let arrancada = false;
-            const escribirCarta = () => {
-              if (arrancada) return;
-              arrancada = true;
-              const fin = secuencia([...letter.children].filter(e => e !== boton), 120);
-              setTimeout(() => boton.classList.add('on'), fin + 350);
-            };
-            // en cuanto la tarjeta acaba de crecer, empieza a escribirse
-            letter.addEventListener('transitionend', ev => {
-              if (ev.target === letter && ev.propertyName === 'transform') escribirCarta();
-            });
-            setTimeout(escribirCarta, 1700);   // por si el navegador no avisa
-          } else {
+          if (reduce) {
+            letter.style.transform = 'translate(-50%,-50%) scale(' + s.toFixed(3) + ')';
             boton.classList.add('on');
+          } else {
+            // 1) asoma pequeña y ladeada, como sacada a mano del sobre
+            letter.style.transition = 'transform .95s cubic-bezier(.34,.9,.4,1)';
+            letter.style.transform = 'translate(-50%,-50%) rotate(-7deg) scale(' + (s * 0.42).toFixed(3) + ')';
+            // 2) se endereza y hace zoom hasta su tamano legible
+            setTimeout(() => {
+              letter.style.transition = 'transform 1.15s cubic-bezier(.22,.72,.24,1), box-shadow 1.15s';
+              letter.style.transform = 'translate(-50%,-50%) rotate(0deg) scale(' + s.toFixed(3) + ')';
+            }, 900);
+            // 3) ya quieta, se escribe
+            setTimeout(escribirCarta, 2280);
           }
           setTimeout(() => document.body.classList.add('reveal-all'), 12000);
         } catch(e){ closeOverlay(); }
