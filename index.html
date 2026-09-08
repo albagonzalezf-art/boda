@@ -1023,7 +1023,8 @@
   const params = new URLSearchParams(location.search);
   const guest = params.get('invitado');
   if (guest) {
-    document.getElementById('letterTo').textContent = 'Para ' + guest;
+    const eg = document.getElementById('envGuest');
+    if (eg) eg.textContent = guest;
     const varios = /\s+y\s+|&|,/i.test(guest) || /^familia/i.test(guest);
     document.getElementById('guestGreeting').textContent = (varios ? 'Queridos ' : 'Querido/a ') + guest + ',';
   }
