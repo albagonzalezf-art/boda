@@ -391,15 +391,7 @@
   @keyframes write{to{clip-path:inset(-15% -3% -15% -3%)}}
   @media (prefers-reduced-motion: reduce){.hn{opacity:1 !important;animation:none !important}}
   @supports (-webkit-background-clip:text) or (background-clip:text){
-    .foil{
-      display:inline-block;
-      background:linear-gradient(105deg,var(--wine) 25%,var(--gold) 42%,#F3E3BC 50%,var(--gold) 58%,var(--wine) 75%);
-      background-size:220% auto;
-      -webkit-background-clip:text;background-clip:text;
-      -webkit-text-fill-color:transparent;color:transparent;
-      animation:foil 6s linear infinite;
-    }
-  }
+    .foil{color:var(--wine)}
   @keyframes foil{to{background-position:-220% center}}
   @media (prefers-reduced-motion: reduce){.hero-names{animation:none}}
   .amp{font-family:'Great Vibes',cursive;font-weight:400;font-style:normal;color:#B08A3E;font-size:.6em;-webkit-text-fill-color:#B08A3E;line-height:1.35}
@@ -461,7 +453,7 @@
     margin:0 auto 16px;
   }
   .card.lugar{background:transparent;border:none;box-shadow:none;padding:8px 10px 30px}
-  .lugar-img{border-radius:6px;box-shadow:0 3px 12px rgba(90,60,30,.12)}
+
   .card-name{font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:var(--green-dark)}
   .card-sub{font-size:.9rem;color:#6E5B48;margin:6px 0 18px}
   .btn{
@@ -800,13 +792,13 @@
   <p class="eyebrow wrt">Cómo llegar</p>
   <h2 class="sec-title wrt" style="--d:.45s">Ubicaciones</h2>
   <div class="card lugar">
-    <img class="lugar-img" src="f/catedral.jpg" alt="Ceremonia" loading="lazy">
+    <img class="lugar-img" src="f/catedral.png" alt="Ceremonia" loading="lazy">
     <p class="card-name">Ceremonia</p>
     <p class="card-sub">Catedral de Lugo · 16:30 h</p>
     <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Catedral+de+Lugo" target="_blank" rel="noopener">Ver en el mapa</a>
   </div>
   <div class="card lugar">
-    <img class="lugar-img" src="f/pazo.jpg" alt="Celebración" loading="lazy">
+    <img class="lugar-img" src="f/pazo.png" alt="Celebración" loading="lazy">
     <p class="card-name">Celebración</p>
     <p class="card-sub">Pazo de Treilán · al finalizar la ceremonia</p>
     <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Pazo+de+Treil%C3%A1n" target="_blank" rel="noopener">Ver en el mapa</a>
