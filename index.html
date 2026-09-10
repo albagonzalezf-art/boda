@@ -404,7 +404,7 @@
   @media (prefers-reduced-motion: reduce){.hero-photo img{animation:none}}
   .hero-photo{
     cursor:zoom-in;margin:20px auto 0;
-    width:min(52vw,205px,30svh);height:auto;
+    width:min(40vw,158px,23svh);height:auto;
     display:block;background:none;border:none;border-radius:0;
   }
 
@@ -429,14 +429,21 @@
     background:url("f/monograma.png") no-repeat center/contain;opacity:.09;
   }
   #agenda .tl-item{position:relative;z-index:1}
-  .timeline{margin-top:40px;text-align:left;position:relative;padding-left:36px}
-  .timeline::before{content:"";position:absolute;left:10px;top:6px;bottom:6px;width:1px;background:var(--gold)}
-  .tl-item{position:relative;padding-bottom:56px}
-  .tl-item:last-child{padding-bottom:0}
-  .tl-item::before{
-    content:"";position:absolute;left:-30px;top:7px;width:8px;height:8px;border-radius:50%;
-    background:var(--wine);border:2px solid var(--ivory);box-shadow:0 0 0 1px var(--wine);
+  .timeline{padding-left:0;margin-top:40px;text-align:left;position:relative;padding-left:36px}
+  .timeline::before{content:"";position:absolute;left:84px;top:8px;bottom:8px;width:1px;background:var(--gold);opacity:.7}
+  .tl-item{
+    position:relative;padding-bottom:52px;
+    display:grid;grid-template-columns:58px 1fr;align-items:start;column-gap:14px;
   }
+  .tl-ic{
+    grid-column:1;width:58px;height:58px;display:block;
+    background-repeat:no-repeat;background-position:center;background-size:contain;
+    opacity:.88;
+  }
+  .tl-txt{grid-column:2;text-align:left}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{content:"";position:absolute;left:81px;top:22px;width:7px;height:7px;border-radius:50%;background:var(--wine)}
+  .tl-txt{padding-left:34px}
   .tl-time{font-size:.78rem;letter-spacing:.26em;text-transform:uppercase;color:var(--wine);font-weight:400}
   .tl-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;margin:2px 0 4px;color:var(--green-dark)}
   .tl-desc{font-size:.92rem;color:#6E5B48}
@@ -759,38 +766,38 @@
   <p class="eyebrow wrt">El gran día</p>
   <h2 class="sec-title wrt" style="--d:.45s">Agenda</h2>
   <div class="timeline">
-    <div class="tl-item">
+    <div class="tl-item"><span class="tl-ic" style="background-image:url('f/ic-ceremonia.png')"></span><div class="tl-txt">
       <p class="tl-time">16:30 h</p>
       <p class="tl-title">Ceremonia</p>
       <p class="tl-desc">Catedral de Lugo</p>
-    </div>
-    <div class="tl-item">
+    </div></div>
+    <div class="tl-item"><span class="tl-ic" style="background-image:url('f/ic-traslado.png')"></span><div class="tl-txt">
       <p class="tl-title">Traslado</p>
       <p class="tl-desc">En el transporte especial para nuestros invitados</p>
-    </div>
-    <div class="tl-item">
+    </div></div>
+    <div class="tl-item"><span class="tl-ic" style="background-image:url('f/ic-coctel.png')"></span><div class="tl-txt">
       <p class="tl-title">Cóctel de bienvenida</p>
       <p class="tl-desc">En los jardines del Pazo de Treilán</p>
-    </div>
-    <div class="tl-item">
+    </div></div>
+    <div class="tl-item"><span class="tl-ic" style="background-image:url('f/ic-cena.png')"></span><div class="tl-txt">
       <p class="tl-title">Cena</p>
       <p class="tl-desc">En el Pazo de Treilán</p>
-    </div>
-    <div class="tl-item">
+    </div></div>
+    <div class="tl-item"><span class="tl-ic" style="background-image:url('f/ic-tarta.png')"></span><div class="tl-txt">
       <p class="tl-time">Al terminar la cena</p>
       <p class="tl-title">Tarta, detalles y primer baile</p>
       <p class="tl-desc">El momento más esperado de la noche</p>
-    </div>
-    <div class="tl-item">
+    </div></div>
+    <div class="tl-item"><span class="tl-ic" style="background-image:url('f/ic-fiesta.png')"></span><div class="tl-txt">
       <p class="tl-time">00:00 h</p>
       <p class="tl-title">Fiesta</p>
       <p class="tl-desc">Barra libre y música hasta el final</p>
-    </div>
-    <div class="tl-item">
+    </div></div>
+    <div class="tl-item"><span class="tl-ic" style="background-image:url('f/ic-fin.png')"></span><div class="tl-txt">
       <p class="tl-time">04:00 h</p>
       <p class="tl-title">Fin de fiesta</p>
       <p class="tl-desc">Traslado al centro de Lugo en el transporte especial para nuestros invitados</p>
-    </div>
+    </div></div>
   </div>
 
   <a class="btn" href="boda.ics" download="Boda-Adrian-y-Alba.ics" style="margin-top:30px">Añadir a mi calendario</a>
