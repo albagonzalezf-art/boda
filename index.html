@@ -465,6 +465,7 @@
 
   .ico-aloja{display:flex;gap:18px;justify-content:center;align-items:center;margin-bottom:16px}
   .ico-aloja span{width:54px;height:54px;display:block;background-repeat:no-repeat;background-position:center;background-size:contain}
+  .ic-dresscode{width:118px;height:118px;display:block;margin:18px auto 6px;background:url("f/ic-dresscode.png") no-repeat center/contain}
   .bus-ic span{width:62px;height:62px;display:block;margin:0 auto;background-repeat:no-repeat;background-position:center;background-size:contain}
   .ic-bus-dia{background-image:url("f/ic-bus-dia.png")}
   .ic-bus-noche{background-image:url("f/ic-bus-noche.png")}
@@ -575,22 +576,23 @@
     .flor-abajo{padding-top:118px;padding-bottom:118px}
   }
   /* esquinas: superior derecha + inferior izquierda */
+  .flor-esq{padding-top:132px;padding-bottom:132px}
   .flor-esq::after{
-    bottom:-12px;left:-20px;width:min(146px,32%);aspect-ratio:330/337;
-    background-image:var(--rosa-sup);transform:rotate(180deg);
+    bottom:-10px;left:-14px;width:min(168px,38%);aspect-ratio:420/400;
+    background-image:url("f/flor-bl.png");
   }
   /* ubicaciones: ramo arriba centrado y esquinero abajo a la izquierda */
   #lugares{
-    background-image:url("f/rosa-esq.png") !important;
-    background-position:left -20px bottom -14px !important;
-    background-size:min(150px,33%) auto !important;
+    background-image:url("f/flor-bl.png") !important;
+    background-position:left -14px bottom -10px !important;
+    background-size:min(168px,38%) auto !important;
     background-repeat:no-repeat !important;
   }
   .flor-esq{
-    background-image:var(--rosa-sup);
+    background-image:url("f/flor-tr.png");
     background-repeat:no-repeat;
-    background-position:right -18px top -10px;
-    background-size:min(146px,32%) auto;
+    background-position:right -14px top -10px;
+    background-size:min(168px,38%) auto;
   }
   footer > *{position:relative;z-index:1}
   .monograma{
@@ -862,41 +864,12 @@
 
 <!-- ======= DRESS CODE ======= -->
 <section id="dresscode" class="flor-esq">
-  <div style="position:relative;background:radial-gradient(120% 80% at 50% 0%,#FFFDF9,#FBEFE9 60%,#F6E3DC 100%);border:1.5px solid var(--wine);border-radius:12px;padding:58px 28px 36px;margin-top:10px;box-shadow:0 10px 28px rgba(75,74,64,.12)">
-    <div style="position:absolute;top:-26px;left:50%;transform:translateX(-50%);background:var(--wine);color:#FBF9F3;padding:12px 30px;border-radius:50px;box-shadow:0 0 0 3px #FFFFFF,0 0 0 4.5px var(--wine),0 6px 14px rgba(75,74,64,.25);white-space:nowrap">
-      <span class="serif" style="font-style:italic;font-size:1.35rem;letter-spacing:.04em">Dress Code</span>
-    </div>
+  <p class="eyebrow wrt">Dress code</p>
+  <h2 class="sec-title wrt" style="--d:.45s">Cómo vestir</h2>
+  <div class="card">
     <p style="font-size:.85rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);font-weight:400">Formal tarde-noche</p>
     <p style="margin-top:8px;color:#6E585C">Caballeros con traje,<br>damas con vestido largo</p>
-    <svg viewBox="0 0 300 250" style="width:100%;max-width:250px;height:auto;margin:22px auto 6px;display:block" fill="none" stroke="#7A2434" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Ilustración de vestido largo y traje">
-      <g class="dc-dress">
-      <!-- vestido -->
-      <path d="M62 34 C 70 42, 94 42, 102 34 C 104 58, 100 82, 92 102 C 88 112, 88 120, 92 132 C 100 158, 112 184, 126 210 C 128 216, 126 222, 118 224 C 96 230, 62 230, 44 224 C 36 222, 34 216, 37 210 C 50 184, 62 158, 70 132 C 74 120, 74 112, 70 102 C 62 82, 58 58, 62 34 Z"/>
-      <path d="M70 104 C 78 109, 86 109, 94 104" stroke-width="1.6"/>
-      <path d="M82 40 C 82 60, 82 80, 82 100" stroke-width="1" stroke-dasharray="1 6"/>
-      </g>
-      <g class="dc-suit">
-      <!-- traje: chaqueta con mangas largas -->
-      <path d="M172 62 C 168 96, 170 126, 174 152 L 238 152 C 242 126, 244 96, 240 62"/>
-      <path d="M188 38 C 196 44, 216 44, 224 38"/>
-      <!-- manga izquierda -->
-      <path d="M188 38 L 164 46 C 155 74, 152 110, 153 144 L 169 146 C 167 114, 168 86, 172 62"/>
-      <path d="M154 138 L 169 140" stroke-width="1.4"/>
-      <!-- manga derecha -->
-      <path d="M224 38 L 248 46 C 257 74, 260 110, 259 144 L 243 146 C 245 114, 244 86, 240 62"/>
-      <path d="M258 138 L 243 140" stroke-width="1.4"/>
-      <!-- solapas -->
-      <path d="M188 38 L 202 96 L 206 152 M 224 38 L 210 96"/>
-      <path d="M188 38 L 196 60 L 192 74 M 224 38 L 216 60 L 220 74" stroke-width="1.6"/>
-      <circle cx="206" cy="104" r="1.6" fill="#7A2434"/>
-      <circle cx="206" cy="118" r="1.6" fill="#7A2434"/>
-      <!-- pajarita -->
-      <path d="M199 44 L 206 48 L 213 44 L 213 52 L 206 48 L 199 52 Z" stroke-width="1.6"/>
-      <!-- pantalón -->
-      <path d="M176 154 L 170 234 L 196 234 L 206 172 L 216 234 L 242 234 L 236 154"/>
-      <path d="M176 154 L 236 154" stroke-width="1.6"/>
-          </g>
-    </svg>
+    <span class="ic-dresscode"></span>
   </div>
 </section>
 
