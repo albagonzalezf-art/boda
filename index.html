@@ -464,9 +464,12 @@
   .card.lugar .btn{margin-top:10px}
 
   .ico-aloja{display:flex;gap:18px;justify-content:center;align-items:center;margin-bottom:16px}
-  .ico-aloja span{width:48px;height:48px;display:block;background-repeat:no-repeat;background-position:center;background-size:contain}
-  .ic-campana{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50'><g fill='none' stroke='%237A2434' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'><path d='M6.5 38h37'/><path d='M9.5 38c0-8.6 7-15.5 16-15.5S41.5 29.4 41.5 38'/><path d='M25.5 22.5v-4.2'/><circle cx='25.5' cy='15.6' r='2.7'/><path d='M12 43.5h27'/><path d='M7.5 12.5c-.9-1.5.3-3.1 1.8-2.8.9.2 1.3 1 1.1 1.9-.2 1.1-1.5 2-2.9.9z'/><path d='M42.5 15.5c1.4-1 3 .1 2.8 1.5-.1 1-1.1 1.6-2 1.3'/></g></svg>")}
-  .ic-hotel{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50'><g fill='none' stroke='%237A2434' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'><path d='M9 45V22.6c0-.7.4-1.3 1-1.6l14-6.6c.8-.4 1.7-.4 2.5 0l13.5 6.6c.6.3 1 .9 1 1.6V45'/><path d='M5 45h40'/><path d='M18.5 45v-8.6c0-1.3 1.1-2.4 2.4-2.4h9.2c1.3 0 2.4 1.1 2.4 2.4V45'/><path d='M16.5 27.5h5M29 27.5h5'/><path d='M24.3 10.3c-.9-1.5.3-3.1 1.8-2.8.9.2 1.3 1 1.1 1.9-.2 1.1-1.5 2-2.9.9z'/></g></svg>")}
+  .ico-aloja span{width:54px;height:54px;display:block;background-repeat:no-repeat;background-position:center;background-size:contain}
+  .bus-ic span{width:62px;height:62px;display:block;margin:0 auto;background-repeat:no-repeat;background-position:center;background-size:contain}
+  .ic-bus-dia{background-image:url("f/ic-bus-dia.png")}
+  .ic-bus-noche{background-image:url("f/ic-bus-noche.png")}
+  .ic-campana{background-image:url("f/ic-campana.png")}
+  .ic-hotel{background-image:url("f/ic-hotel.png")}
   .card-name{font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:var(--green-dark)}
   .card-sub{font-size:.9rem;color:#6E5B48;margin:6px 0 18px}
   .btn{
@@ -831,23 +834,12 @@
     <h2 class="sec-title wrt" style="--d:.45s">Transporte para invitados</h2>
     <div class="bus-row">
       <div class="bus-card">
-        <div class="bus-ic"><svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="#7A2434" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;margin:0 auto" class="ico-bus">
-          <rect x="4" y="11" width="40" height="20" rx="3"/>
-          <path d="M4 27h40"/>
-          <rect x="8" y="15" width="12" height="7" rx="1"/>
-          <rect x="24" y="15" width="11" height="7" rx="1"/>
-          <rect x="37.5" y="15" width="4" height="7" rx="1"/>
-          <path d="M22 15v12"/>
-          <circle cx="14" cy="33" r="3.4"/><circle cx="34" cy="33" r="3.4"/>
-          <path d="M6 31h2.5M39.5 31h2.5"/>
-        </svg></div>
+        <div class="bus-ic"><span class="ic-bus-dia"></span></div>
         <p class="bus-t">Ida</p>
         <p class="bus-d">Del centro de Lugo al Pazo de Treilán, tras la ceremonia.</p>
       </div>
       <div class="bus-card">
-        <div class="bus-ic"><svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="#7A2434" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;margin:0 auto" class="ico-moon">
-          <path d="M30 8.1A17 17 0 1 0 30 39.9A16.2 16.2 0 0 1 30 8.1Z"/>
-        </svg></div>
+        <div class="bus-ic"><span class="ic-bus-noche"></span></div>
         <p class="bus-t">Vuelta</p>
         <p class="bus-d">Del Pazo de Treilán al centro de Lugo, al terminar la fiesta (04:00 h).</p>
       </div>
