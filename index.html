@@ -423,11 +423,6 @@
   .count-lbl{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;margin-top:8px;color:#7A5560}
 
   /* Agenda */
-  #agenda .timeline::after{
-    content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-    width:min(300px,86%);aspect-ratio:442/460;z-index:0;pointer-events:none;
-    background:url("f/monograma.png") no-repeat center/contain;opacity:.09;
-  }
   #agenda .tl-item{position:relative;z-index:1}
   .timeline{margin-top:40px;text-align:left;position:relative;padding-left:0}
   .timeline::before{content:"";position:absolute;left:79px;top:10px;bottom:10px;width:1px;background:var(--gold);opacity:.65;z-index:1}
@@ -577,25 +572,7 @@
   }
   /* esquinas: superior derecha + inferior izquierda */
   .sin-mono{background-image:var(--flor-inv) !important;background-position:center bottom 0 !important;background-size:min(300px,74%) auto !important}
-  .flor-esq{padding-top:86px;padding-bottom:86px}
-  .flor-esq::before{display:none !important}
-  .flor-esq::after{
-    bottom:-10px;left:-14px;width:min(215px,48%);aspect-ratio:420/400;
-    background-image:url("f/flor-bl.png");
-  }
-  /* ubicaciones: ramo arriba centrado y esquinero abajo a la izquierda */
-  #lugares{
-    background-image:url("f/flor-bl.png"),url("f/mono-bg.png") !important;
-    background-position:left -14px bottom -10px, center 50% !important;
-    background-size:min(215px,48%) auto, min(310px,74%) auto !important;
-    background-repeat:no-repeat,no-repeat !important;
-  }
-  .flor-esq{
-    background-image:url("f/flor-tr.png"),url("f/mono-bg.png");
-    background-repeat:no-repeat,no-repeat;
-    background-position:right -14px top -10px, center 54%;
-    background-size:min(215px,48%) auto, min(310px,74%) auto;
-  }
+
   footer > *{position:relative;z-index:1}
   .monograma{
     display:block;width:min(136px,38%);height:auto;margin:28px auto 0;
@@ -610,12 +587,12 @@
     font-family:'Great Vibes',cursive;font-size:1.7rem;color:var(--gold-d,#B08A3E);
     margin-top:12px;line-height:1.3;
   }
-  footer{overflow:hidden;position:relative;padding:80px 24px 104px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--green);
-    background-image:url("f/flor-tl.png"),url("f/flor-tr.png"),url("f/flor-bl.png"),url("f/flor-br.png");
-    background-position:left -16px top -12px,right -16px top -12px,left -16px bottom -12px,right -16px bottom -12px;
-    background-size:min(190px,42%) auto,min(190px,42%) auto,min(190px,42%) auto,min(190px,42%) auto;
-    background-repeat:no-repeat;
-    padding:104px 26px 108px;
+  footer{overflow:hidden;position:relative;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--green);
+    background-image:url("f/flores-h.png"),url("f/flores-h-inv.png"),url("f/mono-bg.png");
+    background-position:center top 0, center bottom 0, center 50%;
+    background-size:min(300px,74%) auto, min(300px,74%) auto, min(310px,74%) auto;
+    background-repeat:no-repeat,no-repeat,no-repeat;
+    padding:118px 26px 122px;
   }
 </style>
 </head>
@@ -831,7 +808,7 @@
 </section>
 
 <!-- ======= AUTOBÚS ======= -->
-<section id="bus" class="dark flor-esq">
+<section id="bus" class="dark flor-abajo">
   <div class="inner">
     <p class="eyebrow wrt">Traslados</p>
     <h2 class="sec-title wrt" style="--d:.45s">Transporte para invitados</h2>
@@ -852,7 +829,7 @@
 </section>
 
 <!-- ======= ALOJAMIENTO ======= -->
-<section id="alojamiento" class="flor-esq">
+<section id="alojamiento" class="dark flor-abajo">
   <p class="eyebrow wrt">Para los que venís de fuera</p>
   <h2 class="sec-title wrt" style="--d:.45s">Alojamiento</h2>
   <div class="card">
@@ -864,7 +841,7 @@
 </section>
 
 <!-- ======= DRESS CODE ======= -->
-<section id="dresscode" class="flor-esq">
+<section id="dresscode" class="dark flor-abajo">
   <p class="eyebrow wrt">Cómo vestir</p>
   <h2 class="sec-title wrt" style="--d:.45s">Dress code</h2>
   <div class="card">
@@ -875,7 +852,7 @@
 </section>
 
 <!-- ======= PREGUNTAS FRECUENTES ======= -->
-<section id="faq" class="flor-esq">
+<section id="faq" class="dark flor-abajo">
   <p class="eyebrow wrt">Antes de venir</p>
   <h2 class="sec-title wrt" style="--d:.45s">Preguntas frecuentes</h2>
   <div class="faq">
@@ -908,7 +885,7 @@
 </section>
 
 <!-- ======= RSVP ======= -->
-<section id="rsvp" class="dark flor-esq">
+<section id="rsvp" class="dark flor-abajo">
   <div class="inner">
     <p class="eyebrow wrt">Confirma tu asistencia</p>
     <h2 class="sec-title wrt" style="--d:.45s">¿Contamos contigo?</h2>
