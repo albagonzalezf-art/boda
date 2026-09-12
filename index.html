@@ -320,10 +320,10 @@
   /* portada: ramo centrado arriba, cayendo */
   #hero{
     position:relative;overflow:hidden;
-    background-image:var(--flor-inv);
-    background-repeat:no-repeat;
-    background-position:center bottom 0;
-    background-size:min(300px,74%) auto;
+    background-image:var(--flor-inv),url("f/mono-bg.png");
+    background-repeat:no-repeat,no-repeat;
+    background-position:center bottom 0, center 46%;
+    background-size:min(300px,74%) auto, min(310px,74%) auto;
   }
   #hero > *{position:relative;z-index:1}
   #hero::after{
@@ -562,10 +562,10 @@
   /* prueba: ramo arriba cayendo y ramo abajo cerrando, sin separador */
   .flor-abajo{
     overflow:visible;padding-top:118px;padding-bottom:132px;
-    background-image:var(--flor-inv);
-    background-repeat:no-repeat;
-    background-position:center bottom 0;
-    background-size:min(300px,74%) auto;
+    background-image:var(--flor-inv),url("f/mono-bg.png");
+    background-repeat:no-repeat,no-repeat;
+    background-position:center bottom 0, center 46%;
+    background-size:min(300px,74%) auto, min(310px,74%) auto;
   }
   .flor-abajo::before{display:none !important}
   .flor-abajo::after{
@@ -576,6 +576,7 @@
     .flor-abajo{padding-top:118px;padding-bottom:118px}
   }
   /* esquinas: superior derecha + inferior izquierda */
+  .sin-mono{background-image:var(--flor-inv) !important;background-position:center bottom 0 !important;background-size:min(300px,74%) auto !important}
   .flor-esq{padding-top:86px;padding-bottom:86px}
   .flor-esq::before{display:none !important}
   .flor-esq::after{
@@ -584,16 +585,16 @@
   }
   /* ubicaciones: ramo arriba centrado y esquinero abajo a la izquierda */
   #lugares{
-    background-image:url("f/flor-bl.png") !important;
-    background-position:left -14px bottom -10px !important;
-    background-size:min(215px,48%) auto !important;
-    background-repeat:no-repeat !important;
+    background-image:url("f/flor-bl.png"),url("f/mono-bg.png") !important;
+    background-position:left -14px bottom -10px, center 50% !important;
+    background-size:min(215px,48%) auto, min(310px,74%) auto !important;
+    background-repeat:no-repeat,no-repeat !important;
   }
   .flor-esq{
-    background-image:url("f/flor-tr.png");
-    background-repeat:no-repeat;
-    background-position:right -14px top -10px;
-    background-size:min(215px,48%) auto;
+    background-image:url("f/flor-tr.png"),url("f/mono-bg.png");
+    background-repeat:no-repeat,no-repeat;
+    background-position:right -14px top -10px, center 54%;
+    background-size:min(215px,48%) auto, min(310px,74%) auto;
   }
   footer > *{position:relative;z-index:1}
   .monograma{
@@ -724,7 +725,7 @@
 </section>
 
 <!-- ======= GALERÍA ======= -->
-<section id="galeria" class="flor-abajo">
+<section id="galeria" class="flor-abajo sin-mono">
   <p class="eyebrow wrt">Nuestros momentos</p>
   <h2 class="sec-title wrt" style="--d:.45s">El viaje que nos trajo hasta aquí</h2>
   <div class="carousel" id="carousel">
@@ -864,8 +865,8 @@
 
 <!-- ======= DRESS CODE ======= -->
 <section id="dresscode" class="flor-esq">
-  <p class="eyebrow wrt">Dress code</p>
-  <h2 class="sec-title wrt" style="--d:.45s">Cómo vestir</h2>
+  <p class="eyebrow wrt">Cómo vestir</p>
+  <h2 class="sec-title wrt" style="--d:.45s">Dress code</h2>
   <div class="card">
     <p style="font-size:.85rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);font-weight:400">Formal tarde-noche</p>
     <p style="margin-top:8px;color:#6E585C">Caballeros con traje,<br>damas con vestido largo</p>
