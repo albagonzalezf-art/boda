@@ -466,6 +466,9 @@
   .ic-bus-noche{background-image:url("f/ic-bus-noche.png")}
   .ic-campana{background-image:url("f/ic-campana.png")}
   .ic-hotel{background-image:url("f/ic-hotel.png")}
+  #alojamiento .card,#dresscode .card{
+    background:transparent;border:none;box-shadow:none;padding:14px 8px 4px;
+  }
   .card-name{font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:var(--green-dark)}
   .card-sub{font-size:.9rem;color:#6E5B48;margin:6px 0 18px}
   .btn{
@@ -588,10 +591,10 @@
     margin-top:12px;line-height:1.3;
   }
   footer{overflow:hidden;position:relative;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--green);
-    background-image:url("f/flores-h.png"),url("f/flores-h-inv.png"),url("f/mono-bg.png");
-    background-position:center top 0, center bottom 0, center 50%;
-    background-size:min(300px,74%) auto, min(300px,74%) auto, min(310px,74%) auto;
-    background-repeat:no-repeat,no-repeat,no-repeat;
+    background-image:url("f/flores-h.png"),url("f/flores-h-inv.png");
+    background-position:center top 0, center bottom 0;
+    background-size:min(300px,74%) auto, min(300px,74%) auto;
+    background-repeat:no-repeat,no-repeat;
     padding:118px 26px 122px;
   }
 </style>
@@ -791,7 +794,7 @@
 </section>
 
 <!-- ======= UBICACIONES ======= -->
-<section id="lugares" class="flor-abajo">
+<section id="lugares" class="flor-abajo sin-mono">
   <p class="eyebrow wrt">Ubicaciones</p>
   <div class="card lugar">
     <h3 class="sec-title lugar-tit wrt" style="--d:.45s">Catedral de Lugo</h3>
