@@ -57,17 +57,17 @@
   }
   .env-faltan{
     position:relative;z-index:2;font-family:'Cormorant Garamond',serif;font-style:italic;
-    font-size:1rem;line-height:1.4;color:var(--wine-dark);opacity:.85;margin:0 auto 20px;max-width:22ch;
+    font-size:.94rem;color:var(--wine-dark);opacity:.8;margin-bottom:10px;
   }
   #overlay.grow .env-guest,#overlay.grow .env-faltan{opacity:0;transition:opacity .5s}
   .env-count{
-    position:relative;z-index:2;display:flex;gap:min(5vw,20px);
-    margin:22px auto 0;align-items:flex-end;justify-content:center;opacity:.85;
+    position:relative;z-index:2;display:flex;gap:min(6vw,26px);
+    margin-bottom:26px;align-items:flex-end;justify-content:center;
   }
   .env-count div{display:flex;flex-direction:column;align-items:center;min-width:2.6em}
   .env-count b{
     font-family:'Cormorant Garamond',serif;font-weight:500;
-    font-size:1.34rem;line-height:1;color:var(--wine);font-variant-numeric:tabular-nums;
+    font-size:2.05rem;line-height:1;color:var(--wine);font-variant-numeric:tabular-nums;
   }
   .env-count span{
     font-family:'Cormorant Garamond',serif;font-size:.6rem;letter-spacing:.24em;
@@ -162,7 +162,7 @@
     position:relative;overflow:hidden;isolation:isolate;align-self:center;
     width:auto;max-width:82%;margin:0 auto;background:var(--wine);color:var(--ivory);
     border:1px solid rgba(230,211,167,.55);border-radius:2em;padding:.24em 1.35em;
-    font-family:'Cormorant Garamond',serif;font-weight:600;font-size:.46em;letter-spacing:.2em;text-indent:.2em;text-transform:uppercase;
+    font-family:'Great Vibes',cursive;font-weight:400;font-size:.78em;letter-spacing:.02em;
     text-align:center;cursor:pointer;
     opacity:0;pointer-events:none;transition:opacity .7s ease,background .25s;
   }
@@ -323,7 +323,7 @@
     background-image:var(--flor-inv),url("f/mono-bg.png");
     background-repeat:no-repeat,no-repeat;
     background-position:center bottom 0, center 46%;
-    background-size:min(300px,74%) auto, min(290px,68%) auto;
+    background-size:min(300px,74%) auto, min(310px,74%) auto;
   }
   #hero > *{position:relative;z-index:1}
   #hero::after{
@@ -469,24 +469,13 @@
   #alojamiento .card,#dresscode .card{
     background:transparent;border:none;box-shadow:none;padding:14px 8px 4px;
   }
-  .llegar{
-    margin-top:26px;padding-top:20px;border-top:1px solid rgba(122,36,52,.16);
-    text-align:left;max-width:30rem;margin-left:auto;margin-right:auto;
-  }
-  .llegar-tit{
-    font-family:'Cormorant Garamond',serif;font-weight:600;font-size:.74rem;
-    letter-spacing:.26em;text-indent:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;
-  }
-  .llegar p{font-size:.96rem;line-height:1.55;margin:0 0 8px}
-  .llegar b{font-weight:600;color:var(--wine)}
   .card-name{font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:var(--green-dark)}
   .card-sub{font-size:.9rem;color:#6E5B48;margin:6px 0 18px}
   .btn{
     display:inline-block;background:transparent;color:var(--wine);
     border:1px solid var(--wine);border-radius:2em;padding:9px 30px;
     box-shadow:inset 0 0 0 1px rgba(122,36,52,.16);
-    font-family:'Cormorant Garamond',serif;font-weight:600;font-size:.82rem;letter-spacing:.2em;text-indent:.2em;
-    text-transform:uppercase;text-align:center;
+    font-family:'Great Vibes',cursive;font-weight:400;font-size:1.3rem;letter-spacing:.02em;text-align:center;
     text-decoration:none;cursor:pointer;position:relative;isolation:isolate;
     transition:background .35s ease,color .35s ease,box-shadow .35s ease;
   }
@@ -574,7 +563,7 @@
     background-image:var(--flor-inv),url("f/mono-bg.png");
     background-repeat:no-repeat,no-repeat;
     background-position:center bottom 0, center 46%;
-    background-size:min(300px,74%) auto, min(290px,68%) auto;
+    background-size:min(300px,74%) auto, min(310px,74%) auto;
   }
   .flor-abajo::before{display:none !important}
   .flor-abajo::after{
@@ -616,7 +605,7 @@
 <div id="overlay">
   <span class="seda" aria-hidden="true"></span>
   <p class="env-guest" id="envGuest">nuestro invitado más especial</p>
-  <p class="env-faltan">nos encantaría compartir este día contigo</p>
+  <p class="env-faltan">Faltan</p>
   <div class="env-count" id="envCount" aria-label="Cuenta atrás">
     <div><b id="ecD">—</b><span>días</span></div>
     <div><b id="ecH">—</b><span>horas</span></div>
@@ -628,9 +617,10 @@
       <div class="env-back"></div>
       <div class="letter" id="letter">
         <span class="l-to">Con la bendición de Dios<br>y el amor de nuestras familias</span>
+        <span class="l-eyebrow">nosotros</span>
         <span class="l-names">Alba <i class="l-amp">&amp;</i> Adrián</span>
         <span class="l-orn" data-fade="1"></span>
-        <p class="l-text">tienen el honor de invitarte<br>a celebrar su matrimonio</p>
+        <p class="l-text">Tenemos el honor de invitarte a celebrar nuestra boda</p>
         <button class="l-btn" id="enterBtn">Consulta los detalles</button>
       </div>
       <div class="env-side left"></div>
@@ -676,33 +666,51 @@
 </section>
 
 <!-- ======= GALERÍA ======= -->
-<section id="galeria">
+<section id="galeria" class="flor-abajo sin-mono">
   <p class="eyebrow wrt">Nuestros momentos</p>
   <h2 class="sec-title wrt" style="--d:.45s">El viaje que nos trajo hasta aquí</h2>
   <div class="carousel" id="carousel">
     <div class="slide"><img src="f/01.jpg" alt="Nuestra primera Navidad"></div>
     <div class="slide"><img src="f/02.jpg" alt="Barcelona"></div>
     <div class="slide"><img src="f/03.jpg" alt="Praga" loading="lazy"></div>
+    <div class="slide"><img src="f/04.jpg" alt="Praga, brindis" loading="lazy"></div>
     <div class="slide"><img src="f/05.jpg" alt="Galicia" loading="lazy"></div>
     <div class="slide"><img src="f/06.jpg" alt="Catedral de Lugo" loading="lazy"></div>
     <div class="slide"><img src="f/07.jpg" alt="Gante" loading="lazy"></div>
-    <div class="slide"><img src="f/09.jpg" alt="Bali" loading="lazy"></div>
+    <div class="slide"><img src="f/08.jpg" alt="Luces de Navidad" loading="lazy"></div>
+    <div class="slide"><img src="f/09.jpg" alt="Bali, Puertas del Cielo" loading="lazy"></div>
+    <div class="slide"><img src="f/10.jpg" alt="Bali" loading="lazy"></div>
+    <div class="slide"><img src="f/11.jpg" alt="Bali, Broken Beach" loading="lazy"></div>
     <div class="slide"><img src="f/12.jpg" alt="Buceando juntos" loading="lazy"></div>
-    <div class="slide"><img src="f/13.jpg" alt="Dubái" loading="lazy"></div>
+    <div class="slide"><img src="f/13.jpg" alt="Dubái, el desierto" loading="lazy"></div>
+    <div class="slide"><img src="f/14.jpg" alt="Dubái" loading="lazy"></div>
     <div class="slide"><img src="f/15.jpg" alt="Londres" loading="lazy"></div>
     <div class="slide"><img src="f/17.jpg" alt="Nuestro plan favorito" loading="lazy"></div>
     <div class="slide"><img src="f/18.jpg" alt="París" loading="lazy"></div>
-    <div class="slide"><img src="f/20.jpg" alt="La pedida" loading="lazy"></div>
+    <div class="slide"><img src="f/19.jpg" alt="París, un café" loading="lazy"></div>
+    <div class="slide"><img src="f/20.jpg" alt="La pedida, París" loading="lazy"></div>
+    <div class="slide"><img src="f/21.jpg" alt="El sí quiero" loading="lazy"></div>
     <div class="slide"><img src="f/22.jpg" alt="Florencia" loading="lazy"></div>
-    <div class="slide"><img src="f/24.jpg" alt="Barcelona, hoy" loading="lazy"></div>
-  </div>
+    <div class="slide"><img src="f/23.jpg" alt="Park Güell" loading="lazy"></div>
+    <div class="slide"><img src="f/24.jpg" alt="Sagrada Familia" loading="lazy"></div>
   </div>
   </div>
   <p style="font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--wine);margin-top:8px">Desliza para ver más →</p>
 </section>
 
 <!-- ======= CUENTA ATRÁS ======= -->
-
+<section id="countdown" class="flor-abajo">
+  <div class="inner">
+    <p class="eyebrow wrt">Cuenta atrás</p>
+    <h2 class="sec-title wrt" style="--d:.45s">Falta cada vez menos</h2>
+    <div class="count-grid">
+      <div class="count-cell"><div class="count-num" id="cd-d">—</div><div class="count-lbl">días</div></div>
+      <div class="count-cell"><div class="count-num" id="cd-h">—</div><div class="count-lbl">horas</div></div>
+      <div class="count-cell"><div class="count-num" id="cd-m">—</div><div class="count-lbl">min</div></div>
+      <div class="count-cell"><div class="count-num" id="cd-s">—</div><div class="count-lbl">seg</div></div>
+    </div>
+  </div>
+</section>
 
 <!-- ======= AGENDA ======= -->
 <section id="agenda" class="flor-abajo">
@@ -729,7 +737,7 @@
     <div class="tl-item"><span class="tl-ic" style="background-image:url('f/ic-tarta.png')"></span><div class="tl-txt">
       <p class="tl-time">Al terminar la cena</p>
       <p class="tl-title">Tarta, detalles y primer baile</p>
-      <p class="tl-desc">&nbsp;</p>
+      <p class="tl-desc">El momento más esperado de la noche</p>
     </div></div>
     <div class="tl-item"><span class="tl-ic" style="background-image:url('f/ic-fiesta.png')"></span><div class="tl-txt">
       <p class="tl-time">00:00 h</p>
@@ -747,7 +755,7 @@
 </section>
 
 <!-- ======= UBICACIONES ======= -->
-<section id="lugares">
+<section id="lugares" class="flor-abajo sin-mono">
   <p class="eyebrow wrt">Ubicaciones</p>
   <div class="card lugar">
     <h3 class="sec-title lugar-tit wrt" style="--d:.45s">Catedral de Lugo</h3>
@@ -764,7 +772,7 @@
 </section>
 
 <!-- ======= AUTOBÚS ======= -->
-<section id="bus">
+<section id="bus" class="flor-abajo">
   <div class="inner">
     <p class="eyebrow wrt">Traslados</p>
     <h2 class="sec-title wrt" style="--d:.45s">Transporte para invitados</h2>
@@ -793,28 +801,22 @@
     <p style="display:inline-block;background:var(--rose);color:#571623;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;border-radius:20px;padding:6px 16px;margin:12px 0 14px;animation:pulse 2.4s infinite">¡Reserva con tiempo!</p>
     <p style="margin-bottom:14px">Os recomendamos buscar alojamiento en el <strong>centro de Lugo</strong> lo antes posible: al estar en pleno Camino de Santiago, las plazas suelen agotarse con mucha antelación.</p>
     <a class="btn" href="https://www.google.com/maps/search/?api=1&query=hoteles+centro+de+Lugo" target="_blank" rel="noopener">Ver hoteles</a>
-    <div class="llegar">
-      <p class="llegar-tit">Cómo llegar</p>
-      <p><b>En avión</b> · Aeropuerto de Santiago, a 1 h 40 min en coche. También A Coruña y Asturias.</p>
-      <p><b>En tren</b> · Estación de Lugo, en el centro, con conexión desde Madrid y A Coruña.</p>
-      <p><b>En coche</b> · A-6 y A-8 hasta Lugo. El pazo está a 20 minutos del centro, con aparcamiento propio.</p>
-    </div>
   </div>
 </section>
 
 <!-- ======= DRESS CODE ======= -->
-<section id="dresscode">
+<section id="dresscode" class="flor-abajo">
   <p class="eyebrow wrt">Dress code</p>
   <h2 class="sec-title wrt" style="--d:.45s">Cómo vestir</h2>
   <div class="card">
-    <p style="font-size:.85rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);font-weight:400">Formal · tarde/noche</p>
-    <p style="margin-top:8px;color:#6E585C">Ellas · vestido largo o midi<br>Ellos · traje y camisa</p>
+    <p style="font-size:.85rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);font-weight:400">Formal tarde-noche</p>
+    <p style="margin-top:8px;color:#6E585C">Caballeros con traje,<br>damas con vestido largo</p>
     <span class="ic-dresscode"></span>
   </div>
 </section>
 
 <!-- ======= PREGUNTAS FRECUENTES ======= -->
-<section id="faq">
+<section id="faq" class="flor-abajo">
   <p class="eyebrow wrt">Preguntas frecuentes</p>
   <h2 class="sec-title wrt" style="--d:.45s">Antes de venir</h2>
   <div class="faq">
@@ -835,7 +837,7 @@
       <p>Estamos preparados: el pazo cuenta con un <strong style="color:var(--gold-soft)">área cubierta</strong> donde se trasladaría el aperitivo si el tiempo no acompaña. La fiesta seguirá igual de bonita, llueva o no.</p>
     </details>
     <details>
-      <summary>¿Qué calzado me recomendáis?</summary>
+      <summary>Tips</summary>
       <p>Para las chicas: el aperitivo será en el jardín, ¡tenedlo en cuenta al elegir el calzado!<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A2434" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-4px;margin-left:6px">
       <circle cx="12" cy="12" r="9.4"/>
       <circle cx="8.6" cy="10.2" r=".95" fill="#7A2434" stroke="none"/>
@@ -843,15 +845,11 @@
       <path d="M8 14.6c2.2 1.9 5.8 1.9 8 0"/>
     </svg></p>
     </details>
-    <details>
-      <summary>¿Dónde puedo dejar el coche?</summary>
-      <p>El pazo cuenta con aparcamiento propio. En el centro de Lugo hay aparcamientos públicos cerca de la catedral, aunque el día de la boda os recomendamos usar el autobús y despreocuparos.</p>
-    </details>
   </div>
 </section>
 
 <!-- ======= RSVP ======= -->
-<section id="rsvp">
+<section id="rsvp" class="flor-abajo">
   <div class="inner">
     <p class="eyebrow wrt">Confirmación</p>
     <h2 class="sec-title wrt" style="--d:.45s">¿Contamos contigo?</h2>
@@ -864,7 +862,7 @@
 
 <footer>
   <p class="frase">Una boda se vive tres veces:<br>al soñarla, al celebrarla y al recordarla.</p>
-  <p class="gracias">Nos vemos al otro lado de este «sí»</p>
+  <p class="gracias">Gracias por acompañarnos</p>
   <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;display:block;margin-top:24px">Con todo nuestro cariño,</span>
   <span style="font-family:'Great Vibes',cursive;font-style:normal;font-size:2.1rem;line-height:1.4;display:block;color:var(--wine)">Alba <span class="amp" style="font-size:.62em">&amp;</span> Adrián</span>
   <img class="monograma" src="f/monograma.png" alt="Monograma de Alba y Adrián" loading="lazy">
@@ -973,7 +971,7 @@
   let opened = false;
   document.getElementById('openSeal').addEventListener('click', () => {
     if (opened) return; opened = true;
-    // la música queda a disposición del invitado en el botón flotante                                 // la canción empieza a sonar al romper el sello
+    tryPlay();                                 // la canción empieza a sonar al romper el sello
     // explosión dorada del lacre
     if (!reduce) {
       const symbols = ['✦','❀','✧','•'];
@@ -997,13 +995,30 @@
           env.classList.add('grow');
           overlay.classList.add('grow');
           const boton = letter.querySelector('.l-btn');
+          let arrancada = false;
+          const escribirCarta = () => {
+            if (arrancada) return;
+            arrancada = true;
+            const fin = secuencia([...letter.children].filter(e => e !== boton), 140);
+            setTimeout(() => boton.classList.add('on'), fin + 380);
+          };
           const s = Math.min(0.92 * innerWidth / letter.offsetWidth,
                              0.88 * innerHeight / letter.offsetHeight, 3.4);
-          letter.style.transition = reduce ? 'none'
-            : 'transform 1.5s cubic-bezier(.22,.72,.24,1), box-shadow 1.5s';
-          letter.style.transform = 'translate(-50%,-54%) scale(' + s.toFixed(3) + ')';
-          [...letter.children].forEach(e => { e.style.clipPath = 'none'; e.classList.add('on'); });
-          setTimeout(() => boton.classList.add('on'), reduce ? 0 : 1700);
+          if (reduce) {
+            letter.style.transform = 'translate(-50%,-54%) scale(' + s.toFixed(3) + ')';
+            boton.classList.add('on');
+          } else {
+            // 1) asoma pequeña y ladeada, como sacada a mano del sobre
+            letter.style.transition = 'transform .95s cubic-bezier(.34,.9,.4,1)';
+            letter.style.transform = 'translate(-50%,-54%) rotate(-7deg) scale(' + (s * 0.42).toFixed(3) + ')';
+            // 2) se endereza y hace zoom hasta su tamano legible
+            setTimeout(() => {
+              letter.style.transition = 'transform 1.15s cubic-bezier(.22,.72,.24,1), box-shadow 1.15s';
+              letter.style.transform = 'translate(-50%,-54%) rotate(0deg) scale(' + s.toFixed(3) + ')';
+            }, 900);
+            // 3) ya quieta, se escribe
+            setTimeout(escribirCarta, 2280);
+          }
           setTimeout(() => document.body.classList.add('reveal-all'), 12000);
         } catch(e){ closeOverlay(); }
       }, reduce ? 80 : 1600);
