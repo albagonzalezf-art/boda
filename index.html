@@ -57,7 +57,7 @@
   }
   .env-faltan{
     position:relative;z-index:2;font-family:'Cormorant Garamond',serif;font-style:italic;
-    font-size:.94rem;color:var(--wine-dark);opacity:.8;margin-bottom:10px;
+    font-size:1.02rem;line-height:1.45;color:var(--wine-dark);opacity:.85;margin:0 auto 26px;max-width:21ch;
   }
   #overlay.grow .env-guest,#overlay.grow .env-faltan{opacity:0;transition:opacity .5s}
   .env-count{
@@ -469,6 +469,16 @@
   #alojamiento .card,#dresscode .card{
     background:transparent;border:none;box-shadow:none;padding:14px 8px 4px;
   }
+  .llegar{
+    margin-top:28px;padding-top:22px;border-top:1px solid rgba(122,36,52,.14);
+    text-align:left;max-width:30rem;margin-left:auto;margin-right:auto;
+  }
+  .llegar-tit{
+    font-family:'Cormorant Garamond',serif;font-weight:600;font-size:.72rem;
+    letter-spacing:.28em;text-indent:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;
+  }
+  .llegar p{font-size:.95rem;line-height:1.58;margin:0 0 9px}
+  .llegar b{font-weight:600;color:var(--wine)}
   .card-name{font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:var(--green-dark)}
   .card-sub{font-size:.9rem;color:#6E5B48;margin:6px 0 18px}
   .btn{
@@ -605,22 +615,17 @@
 <div id="overlay">
   <span class="seda" aria-hidden="true"></span>
   <p class="env-guest" id="envGuest">nuestro invitado más especial</p>
-  <p class="env-faltan">Faltan</p>
-  <div class="env-count" id="envCount" aria-label="Cuenta atrás">
-    <div><b id="ecD">—</b><span>días</span></div>
-    <div><b id="ecH">—</b><span>horas</span></div>
-    <div><b id="ecM">—</b><span>min</span></div>
-    <div><b id="ecS">—</b><span>seg</span></div>
+  <p class="env-faltan">nos encantaría compartir este día contigo</p>
+  
   </div>
   <div class="env-scene">
     <div class="env" id="env">
       <div class="env-back"></div>
       <div class="letter" id="letter">
         <span class="l-to">Con la bendición de Dios<br>y el amor de nuestras familias</span>
-        <span class="l-eyebrow">nosotros</span>
         <span class="l-names">Alba <i class="l-amp">&amp;</i> Adrián</span>
         <span class="l-orn" data-fade="1"></span>
-        <p class="l-text">Tenemos el honor de invitarte a celebrar nuestra boda</p>
+        <p class="l-text">tienen el honor de invitarte<br>a celebrar su matrimonio</p>
         <button class="l-btn" id="enterBtn">Consulta los detalles</button>
       </div>
       <div class="env-side left"></div>
@@ -666,28 +671,21 @@
 </section>
 
 <!-- ======= GALERÍA ======= -->
-<section id="galeria" class="flor-abajo sin-mono">
+<section id="galeria">
   <p class="eyebrow wrt">Nuestros momentos</p>
   <h2 class="sec-title wrt" style="--d:.45s">El viaje que nos trajo hasta aquí</h2>
   <div class="carousel" id="carousel">
-    <div class="slide"><img src="f/01.jpg" alt="Nuestra primera Navidad"></div>
     <div class="slide"><img src="f/02.jpg" alt="Barcelona"></div>
     <div class="slide"><img src="f/03.jpg" alt="Praga" loading="lazy"></div>
-    <div class="slide"><img src="f/04.jpg" alt="Praga, brindis" loading="lazy"></div>
-    <div class="slide"><img src="f/05.jpg" alt="Galicia" loading="lazy"></div>
     <div class="slide"><img src="f/06.jpg" alt="Catedral de Lugo" loading="lazy"></div>
     <div class="slide"><img src="f/07.jpg" alt="Gante" loading="lazy"></div>
-    <div class="slide"><img src="f/08.jpg" alt="Luces de Navidad" loading="lazy"></div>
-    <div class="slide"><img src="f/09.jpg" alt="Bali, Puertas del Cielo" loading="lazy"></div>
     <div class="slide"><img src="f/10.jpg" alt="Bali" loading="lazy"></div>
-    <div class="slide"><img src="f/11.jpg" alt="Bali, Broken Beach" loading="lazy"></div>
     <div class="slide"><img src="f/12.jpg" alt="Buceando juntos" loading="lazy"></div>
     <div class="slide"><img src="f/13.jpg" alt="Dubái, el desierto" loading="lazy"></div>
     <div class="slide"><img src="f/14.jpg" alt="Dubái" loading="lazy"></div>
     <div class="slide"><img src="f/15.jpg" alt="Londres" loading="lazy"></div>
     <div class="slide"><img src="f/17.jpg" alt="Nuestro plan favorito" loading="lazy"></div>
     <div class="slide"><img src="f/18.jpg" alt="París" loading="lazy"></div>
-    <div class="slide"><img src="f/19.jpg" alt="París, un café" loading="lazy"></div>
     <div class="slide"><img src="f/20.jpg" alt="La pedida, París" loading="lazy"></div>
     <div class="slide"><img src="f/21.jpg" alt="El sí quiero" loading="lazy"></div>
     <div class="slide"><img src="f/22.jpg" alt="Florencia" loading="lazy"></div>
@@ -737,7 +735,7 @@
     <div class="tl-item"><span class="tl-ic" style="background-image:url('f/ic-tarta.png')"></span><div class="tl-txt">
       <p class="tl-time">Al terminar la cena</p>
       <p class="tl-title">Tarta, detalles y primer baile</p>
-      <p class="tl-desc">El momento más esperado de la noche</p>
+      <p class="tl-desc"></p>
     </div></div>
     <div class="tl-item"><span class="tl-ic" style="background-image:url('f/ic-fiesta.png')"></span><div class="tl-txt">
       <p class="tl-time">00:00 h</p>
@@ -755,7 +753,7 @@
 </section>
 
 <!-- ======= UBICACIONES ======= -->
-<section id="lugares" class="flor-abajo sin-mono">
+<section id="lugares">
   <p class="eyebrow wrt">Ubicaciones</p>
   <div class="card lugar">
     <h3 class="sec-title lugar-tit wrt" style="--d:.45s">Catedral de Lugo</h3>
@@ -772,7 +770,7 @@
 </section>
 
 <!-- ======= AUTOBÚS ======= -->
-<section id="bus" class="flor-abajo">
+<section id="bus">
   <div class="inner">
     <p class="eyebrow wrt">Traslados</p>
     <h2 class="sec-title wrt" style="--d:.45s">Transporte para invitados</h2>
@@ -801,11 +799,17 @@
     <p style="display:inline-block;background:var(--rose);color:#571623;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;border-radius:20px;padding:6px 16px;margin:12px 0 14px;animation:pulse 2.4s infinite">¡Reserva con tiempo!</p>
     <p style="margin-bottom:14px">Os recomendamos buscar alojamiento en el <strong>centro de Lugo</strong> lo antes posible: al estar en pleno Camino de Santiago, las plazas suelen agotarse con mucha antelación.</p>
     <a class="btn" href="https://www.google.com/maps/search/?api=1&query=hoteles+centro+de+Lugo" target="_blank" rel="noopener">Ver hoteles</a>
+    <div class="llegar">
+      <p class="llegar-tit">Cómo llegar</p>
+      <p><b>En avión</b> · Aeropuerto de Santiago, a hora y media en coche. También A Coruña y Asturias.</p>
+      <p><b>En tren</b> · Estación de Lugo, en pleno centro, con conexión desde Madrid y A Coruña.</p>
+      <p><b>En coche</b> · A-6 y A-8 hasta Lugo. El pazo queda a veinte minutos del centro y tiene aparcamiento.</p>
+    </div>
   </div>
 </section>
 
 <!-- ======= DRESS CODE ======= -->
-<section id="dresscode" class="flor-abajo">
+<section id="dresscode">
   <p class="eyebrow wrt">Dress code</p>
   <h2 class="sec-title wrt" style="--d:.45s">Cómo vestir</h2>
   <div class="card">
@@ -816,7 +820,7 @@
 </section>
 
 <!-- ======= PREGUNTAS FRECUENTES ======= -->
-<section id="faq" class="flor-abajo">
+<section id="faq">
   <p class="eyebrow wrt">Preguntas frecuentes</p>
   <h2 class="sec-title wrt" style="--d:.45s">Antes de venir</h2>
   <div class="faq">
@@ -837,7 +841,7 @@
       <p>Estamos preparados: el pazo cuenta con un <strong style="color:var(--gold-soft)">área cubierta</strong> donde se trasladaría el aperitivo si el tiempo no acompaña. La fiesta seguirá igual de bonita, llueva o no.</p>
     </details>
     <details>
-      <summary>Tips</summary>
+      <summary>¿Qué calzado me recomendáis?</summary>
       <p>Para las chicas: el aperitivo será en el jardín, ¡tenedlo en cuenta al elegir el calzado!<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A2434" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-4px;margin-left:6px">
       <circle cx="12" cy="12" r="9.4"/>
       <circle cx="8.6" cy="10.2" r=".95" fill="#7A2434" stroke="none"/>
@@ -845,11 +849,15 @@
       <path d="M8 14.6c2.2 1.9 5.8 1.9 8 0"/>
     </svg></p>
     </details>
+    <details>
+      <summary>¿Dónde puedo dejar el coche?</summary>
+      <p>El Pazo de Treilán cuenta con aparcamiento propio. En el centro de Lugo hay aparcamientos públicos cerca de la catedral, aunque ese día os recomendamos usar el autobús y despreocuparos por completo.</p>
+    </details>
   </div>
 </section>
 
 <!-- ======= RSVP ======= -->
-<section id="rsvp" class="flor-abajo">
+<section id="rsvp">
   <div class="inner">
     <p class="eyebrow wrt">Confirmación</p>
     <h2 class="sec-title wrt" style="--d:.45s">¿Contamos contigo?</h2>
@@ -862,7 +870,7 @@
 
 <footer>
   <p class="frase">Una boda se vive tres veces:<br>al soñarla, al celebrarla y al recordarla.</p>
-  <p class="gracias">Gracias por acompañarnos</p>
+  <p class="gracias">Nos vemos al otro lado de este «sí»</p>
   <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;display:block;margin-top:24px">Con todo nuestro cariño,</span>
   <span style="font-family:'Great Vibes',cursive;font-style:normal;font-size:2.1rem;line-height:1.4;display:block;color:var(--wine)">Alba <span class="amp" style="font-size:.62em">&amp;</span> Adrián</span>
   <img class="monograma" src="f/monograma.png" alt="Monograma de Alba y Adrián" loading="lazy">
@@ -904,23 +912,6 @@
   }, 16000);
 
   // --- Cuenta atrás de la pantalla del sobre ---
-  (function(){
-    const dia = new Date('2027-09-03T16:30:00+02:00');
-    const D = document.getElementById('ecD'), H = document.getElementById('ecH'),
-          M = document.getElementById('ecM'), S = document.getElementById('ecS');
-    function pinta(){
-      let t = Math.max(0, dia - new Date());
-      const d = Math.floor(t / 86400000); t -= d * 86400000;
-      const h = Math.floor(t / 3600000);  t -= h * 3600000;
-      const m = Math.floor(t / 60000);    t -= m * 60000;
-      const s = Math.floor(t / 1000);
-      D.textContent = d;
-      H.textContent = String(h).padStart(2,'0');
-      M.textContent = String(m).padStart(2,'0');
-      S.textContent = String(s).padStart(2,'0');
-    }
-    pinta(); setInterval(pinta, 1000);
-  })();
 
   // --- Personalización: ?invitado=Nombre ---
   const params = new URLSearchParams(location.search);
@@ -1008,16 +999,10 @@
             letter.style.transform = 'translate(-50%,-54%) scale(' + s.toFixed(3) + ')';
             boton.classList.add('on');
           } else {
-            // 1) asoma pequeña y ladeada, como sacada a mano del sobre
-            letter.style.transition = 'transform .95s cubic-bezier(.34,.9,.4,1)';
-            letter.style.transform = 'translate(-50%,-54%) rotate(-7deg) scale(' + (s * 0.42).toFixed(3) + ')';
-            // 2) se endereza y hace zoom hasta su tamano legible
-            setTimeout(() => {
-              letter.style.transition = 'transform 1.15s cubic-bezier(.22,.72,.24,1), box-shadow 1.15s';
-              letter.style.transform = 'translate(-50%,-54%) rotate(0deg) scale(' + s.toFixed(3) + ')';
-            }, 900);
-            // 3) ya quieta, se escribe
-            setTimeout(escribirCarta, 2280);
+            // un solo gesto: la tarjeta sale del sobre y queda legible
+            letter.style.transition = 'transform 1.4s cubic-bezier(.22,.72,.24,1), box-shadow 1.4s';
+            letter.style.transform = 'translate(-50%,-54%) scale(' + s.toFixed(3) + ')';
+            setTimeout(escribirCarta, 1450);
           }
           setTimeout(() => document.body.classList.add('reveal-all'), 12000);
         } catch(e){ closeOverlay(); }
@@ -1027,11 +1012,7 @@
 
   // --- Playlist: tres canciones que se van rotando ---
   const musicBtn = document.getElementById('musicBtn');
-  const PLAYLIST = [
-    '588855786',   // A Thousand Years
-    '1591728438',  // Perfect (Instrumental Piano)
-    '1545549075'   // Marry You (Instrumental)
-  ];
+  const PLAYLIST = ['588855786'];   // A Thousand Years
   const previews = {};
   const song = new Audio();
   song.preload = 'auto'; song.volume = 0;
