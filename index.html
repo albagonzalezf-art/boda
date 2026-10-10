@@ -1029,7 +1029,15 @@ Toca para abrir tu invitación.">
 
   // --- Personalización: ?invitado=Nombre ---
   const params = new URLSearchParams(location.search);
-  const guest = (params.get('invitado') || '').trim().replace(/\s+/g, ' ').slice(0, 60);
+  let crudo = params.get('invitado') || '';
+  // algunos teclados y apps vuelven a codificar el enlace y llega "%2520" en vez de "%20":
+  // se deshacen los escapes que hayan sobrevivido, y el "+" tambien vale como espacio
+  for (let i = 0; i < 3 && /%[0-9A-Fa-f]{2}/.test(crudo); i++) {
+    const antes = crudo;
+    try { crudo = decodeURIComponent(crudo.replace(/\+/g, ' ')); } catch (e) { break; }
+    if (crudo === antes) break;
+  }
+  const guest = crudo.replace(/\+/g, ' ').trim().replace(/\s+/g, ' ').slice(0, 60);
   if (guest) {
     // plural si son varios: "Ana y Luis", "Familia Pérez", "Ana, Luis"
     const varios = /\s+y\s+|&|,/i.test(guest) || /^familias?\b/i.test(guest);
