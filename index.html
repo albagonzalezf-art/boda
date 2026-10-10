@@ -772,7 +772,7 @@ Toca para abrir tu invitación.">
   <h1 class="hero-names" style="margin-bottom:29px"><span class="hn wrt" style="--d:1.6s"><span class="foil">Alba</span></span><span class="hn wrt" style="--d:2.3s"><span class="amp">&amp;</span></span><span class="hn wrt" style="--d:2.7s"><span class="foil">Adrián</span></span></h1>
   <p class="hero-date wrt" style="--d:3.9s">3 · Septiembre · 2027</p>
   <p class="hero-place wrt" style="--d:4.4s;margin-bottom:10px">Lugo, Galicia</p>
-  <div class="hero-photo"><img src="f/monograma.png" alt="Monograma de Alba y Adrián"></div>
+  <div class="hero-photo wrt" style="--d:5s"><img src="f/monograma.png" alt="Monograma de Alba y Adrián"></div>
 </section>
 
 <!-- ======= NUESTRA HISTORIA ======= -->
@@ -1016,10 +1016,14 @@ Toca para abrir tu invitación.">
   if (!reduce) {
     document.body.classList.add('js');
   }
-  // red de seguridad: pase lo que pase, todo acaba visible
-  setTimeout(() => {
-    document.body.classList.add('reveal-all');
-  }, 16000);
+  // red de seguridad: pase lo que pase, todo acaba visible.
+  // se reprograma para no cortar la escritura de la portada a medias
+  let redT = null;
+  function red(ms){
+    clearTimeout(redT);
+    redT = setTimeout(() => document.body.classList.add('reveal-all'), ms);
+  }
+  red(16000);
 
   // --- Cuenta atrás de la pantalla del sobre ---
 
@@ -1056,8 +1060,10 @@ Toca para abrir tu invitación.">
         document.querySelector('.hn:nth-child(2)'),
         document.querySelector('.hn:nth-child(3)'),
         document.querySelector('.hero-date'),
-        document.querySelector('.hero-place')
+        document.querySelector('.hero-place'),
+        document.querySelector('.hero-photo')
       ], 0);
+      red(fin + 900);          // la red espera a que termine el ultimo trazo
     }
   }
   // red de seguridad: si algo fallara en la animación, la invitación siempre queda accesible
@@ -1111,7 +1117,7 @@ Toca para abrir tu invitación.">
             requestAnimationFrame(() => { letter.style.transform = centrar; });
             setTimeout(escribirCarta, 1450);
           }
-          setTimeout(() => document.body.classList.add('reveal-all'), 12000);
+          red(12000);
         } catch(e){ closeOverlay(); }
       }, reduce ? 80 : 1600);
     } catch(e){ closeOverlay(); }
