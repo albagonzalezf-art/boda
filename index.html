@@ -1040,7 +1040,7 @@ Toca para abrir tu invitación.">
   const guest = crudo.replace(/\+/g, ' ').trim().replace(/\s+/g, ' ').slice(0, 60);
   if (guest) {
     // plural si son varios: "Ana y Luis", "Familia Pérez", "Ana, Luis"
-    const varios = /\s+y\s+|&|,/i.test(guest) || /^familias?\b/i.test(guest);
+    const varios = /\s+[ye]\s+|&|\+|,/i.test(guest) || /^(familias?|sres?\.?|señores)\b/i.test(guest);
     const eg = document.getElementById('envGuest');
     if (eg) {
       // se construye con nodos de texto, nunca con innerHTML: el nombre viene de la URL
