@@ -1029,11 +1029,31 @@ Toca para abrir tu invitación.">
 
   // --- Personalización: ?invitado=Nombre ---
   const params = new URLSearchParams(location.search);
-  const guest = params.get('invitado');
+  const guest = (params.get('invitado') || '').trim().replace(/\s+/g, ' ').slice(0, 60);
   if (guest) {
+    // plural si son varios: "Ana y Luis", "Familia Pérez", "Ana, Luis"
+    const varios = /\s+y\s+|&|,/i.test(guest) || /^familias?\b/i.test(guest);
     const eg = document.getElementById('envGuest');
-    if (eg) eg.textContent = guest;
-    const varios = /\s+y\s+|&|,/i.test(guest) || /^familia/i.test(guest);
+    if (eg) {
+      // se construye con nodos de texto, nunca con innerHTML: el nombre viene de la URL
+      eg.textContent = '';
+      eg.appendChild(document.createTextNode(guest + ','));
+      eg.appendChild(document.createElement('br'));
+      eg.appendChild(document.createTextNode(varios ? 'sois parte de nuestra historia'
+                                                    : 'eres parte de nuestra historia'));
+    }
+    if (varios) {
+      const lt = document.querySelector('.l-text');
+      if (lt) lt.textContent = 'Tenemos el honor de invitaros a celebrar nuestro matrimonio.';
+      const sub = document.querySelector('.ov-sub');
+      if (sub) {
+        sub.textContent = '';
+        ['Queremos compartir con vosotros', 'el comienzo de nuestro', 'para siempre.'].forEach((t, i) => {
+          if (i) sub.appendChild(document.createElement('br'));
+          sub.appendChild(document.createTextNode(t));
+        });
+      }
+    }
   }
 
   // --- Pétalos flotando ---
