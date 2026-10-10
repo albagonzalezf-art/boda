@@ -126,6 +126,13 @@ Toca para abrir tu invitación.">
     text-transform:uppercase;color:var(--wine);text-align:center;line-height:1.75;
     margin:0 0 clamp(16px,3vh,24px);max-width:none;
   }
+  /* el nombre del invitado, en la letra de los novios */
+  .ov-nombre{
+    display:block;font-family:'Parisienne',cursive;font-weight:400;
+    text-transform:none;letter-spacing:.01em;text-indent:0;
+    font-size:2.45em;line-height:1.18;
+    margin:0 auto .26em;max-width:11ch;text-wrap:balance;
+  }
   .ov-sub{
     position:relative;z-index:2;font-family:'Cormorant Garamond',serif;font-style:italic;
     font-size:clamp(.98rem,4.2vw,1.12rem);line-height:1.72;color:var(--wine);
@@ -1045,8 +1052,10 @@ Toca para abrir tu invitación.">
     if (eg) {
       // se construye con nodos de texto, nunca con innerHTML: el nombre viene de la URL
       eg.textContent = '';
-      eg.appendChild(document.createTextNode(guest + ','));
-      eg.appendChild(document.createElement('br'));
+      const nom = document.createElement('span');
+      nom.className = 'ov-nombre';
+      nom.textContent = guest + ',';
+      eg.appendChild(nom);
       eg.appendChild(document.createTextNode(varios ? 'sois parte de nuestra historia'
                                                     : 'eres parte de nuestra historia'));
     }
