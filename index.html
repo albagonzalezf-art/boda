@@ -133,6 +133,36 @@ Toca para abrir tu invitación.">
     font-size:2.45em;line-height:1.18;
     margin:0 auto .26em;max-width:11ch;text-wrap:balance;
   }
+  /* aviso de deslizar: aparece al terminar la portada y se va al primer scroll */
+  .scroll-hint{
+    position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom,0px));
+    transform:translateX(-50%);z-index:60;pointer-events:none;
+    display:flex;flex-direction:column;align-items:center;gap:5px;
+    padding:12px 26px 10px;
+    opacity:0;visibility:hidden;transition:opacity .7s ease,visibility .7s;
+  }
+  /* halo de papel: el aviso cae sobre la acuarela inferior y si no, no se lee */
+  .scroll-hint::before{
+    content:"";position:absolute;inset:-20px -40px -16px;z-index:-1;pointer-events:none;
+    background:radial-gradient(ellipse closest-side at center,
+      rgba(251,247,240,.97) 0%, rgba(251,247,240,.9) 38%,
+      rgba(251,247,240,.5) 68%, rgba(251,247,240,0) 100%);
+  }
+  body.ver-aviso .scroll-hint{opacity:1;visibility:visible}
+  .sh-txt{
+    font-family:'Cormorant Garamond',serif;font-weight:600;font-size:.6rem;
+    letter-spacing:.24em;text-indent:.24em;text-transform:uppercase;
+    color:rgba(122,36,52,.72);
+  }
+  .sh-ch{display:block;width:21px;height:auto;overflow:visible;
+    fill:none;stroke:rgba(169,130,56,.95);stroke-width:1.9;
+    stroke-linecap:round;stroke-linejoin:round;
+    animation:shBaja 2.4s ease-in-out infinite}
+  @keyframes shBaja{
+    0%,100%{transform:translateY(-3px);opacity:.5}
+    50%{transform:translateY(7px);opacity:1}
+  }
+  @media (prefers-reduced-motion: reduce){.sh-ch{animation:none;opacity:.9}}
   .ov-sub{
     position:relative;z-index:2;font-family:'Cormorant Garamond',serif;font-style:italic;
     font-size:clamp(.98rem,4.2vw,1.12rem);line-height:1.72;color:var(--wine);
@@ -986,6 +1016,11 @@ Toca para abrir tu invitación.">
 
 <div id="lightbox" role="dialog" aria-label="Foto ampliada"><img id="lightboxImg" src="" alt="Foto ampliada"></div>
 
+<div class="scroll-hint" id="scrollHint" aria-hidden="true">
+  <span class="sh-txt">Desliza</span>
+  <svg class="sh-ch" viewBox="0 0 24 15" focusable="false"><path d="M2.5 2.5 12 11.5 21.5 2.5"/></svg>
+</div>
+
 <footer>
   <p class="frase">Una boda se vive tres veces:<br>al soñarla, al celebrarla y al recordarla.</p>
   <p class="gracias">Nada de esto sería lo mismo sin vosotros</p>
@@ -1101,8 +1136,27 @@ Toca para abrir tu invitación.">
         document.querySelector('.hero-photo')
       ], 0);
       red(fin + 900);          // la red espera a que termine el ultimo trazo
+      // no esperamos a que termine toda la caligrafia (9 s era demasiado):
+      // en cuanto estan escritos los nombres y la fecha, ya se puede avisar
+      avisarDeslizar(Math.min(fin + 1300, 3800));
     }
   }
+  // --- Aviso de deslizar: muchos invitados no saben que la invitacion sigue abajo ---
+  let avisoFuera = false;
+  function quitarAviso(){
+    if (avisoFuera) return;
+    avisoFuera = true;
+    document.body.classList.remove('ver-aviso');
+  }
+  function avisarDeslizar(retardo){
+    setTimeout(() => {
+      if (avisoFuera || window.scrollY > 40) return;
+      document.body.classList.add('ver-aviso');
+    }, retardo);
+  }
+  // al primer desplazamiento desaparece y no vuelve
+  addEventListener('scroll', () => { if (window.scrollY > 40) quitarAviso(); }, {passive:true});
+
   // red de seguridad: si algo fallara en la animación, la invitación siempre queda accesible
   window.addEventListener('error', closeOverlay);
   // 4) el botón (o cualquier toque en la carta ya abierta) abre la parte interactiva
