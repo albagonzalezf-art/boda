@@ -1116,6 +1116,7 @@ Toca para abrir tu invitación.">
   const letter = document.getElementById('letter');
   function closeOverlay(){
     overlay.classList.add('done');
+    avisarDeslizar(2000);                    // 2 s desde que tocan el boton, sin esperar a la caligrafia
     setTimeout(() => {
       overlay.style.display = 'none';        // el sobre ya no tapa nada
       setTimeout(escribirPortada, 260);      // y solo entonces empieza a escribirse la portada
@@ -1136,9 +1137,6 @@ Toca para abrir tu invitación.">
         document.querySelector('.hero-photo')
       ], 0);
       red(fin + 900);          // la red espera a que termine el ultimo trazo
-      // no esperamos a que termine toda la caligrafia (9 s era demasiado):
-      // en cuanto estan escritos los nombres y la fecha, ya se puede avisar
-      avisarDeslizar(Math.min(fin + 1300, 3800));
     }
   }
   // --- Aviso de deslizar: muchos invitados no saben que la invitacion sigue abajo ---
@@ -1148,7 +1146,10 @@ Toca para abrir tu invitación.">
     avisoFuera = true;
     document.body.classList.remove('ver-aviso');
   }
+  let avisoProgramado = false;
   function avisarDeslizar(retardo){
+    if (avisoProgramado) return;             // closeOverlay puede dispararse mas de una vez
+    avisoProgramado = true;
     setTimeout(() => {
       if (avisoFuera || window.scrollY > 40) return;
       document.body.classList.add('ver-aviso');
